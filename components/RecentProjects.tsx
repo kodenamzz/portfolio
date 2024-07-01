@@ -1,6 +1,6 @@
 import { projects } from "@/data";
 import React from "react";
-import { CardBody, CardContainer, CardItem } from "./ThreeDCard";
+import { CardBody, CardContainer, CardItem } from "./ui/ThreeDCard";
 import Image from "next/image";
 import Link from "next/link";
 import { FaLocationArrow } from "react-icons/fa";
