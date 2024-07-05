@@ -9,7 +9,10 @@ const RecentProjects = () => {
   return (
     <div id="projects" className="py-20">
       <h1 className="heading">
-        A some selection of <span className="text-purple">recent projects</span>
+        A some selection of{" "}
+        <span className="text-purpleDark dark:text-purple">
+          recent projects
+        </span>
       </h1>
       <div className="flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-16 mt-20">
         {projects.map((project) => (
@@ -26,7 +29,7 @@ const RecentProjects = () => {
                   translateZ="100"
                   className="w-full mt-4 relative flex items-center justify-center overflow-hidden sm:h-[40vh] h-[30vh] min-h-[250px] mb-10"
                 >
-                  <div className="bg-[#13162D] rounded-3xl group-hover/card:shadow-3xl w-full h-full">
+                  <div className="bg-neutral-300 dark:bg-[#13162D] rounded-3xl group-hover/card:shadow-3xl w-full h-full">
                     <Image
                       src="/bg.png"
                       height="1000"
@@ -61,7 +64,7 @@ const RecentProjects = () => {
                     {project.iconLists.map((icon, index) => (
                       <div
                         key={icon}
-                        className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex items-center justify-center"
+                        className="border border-white/[0.2] rounded-full bg-neutral-200/50 dark:bg-black lg:w-10 lg:h-10 w-8 h-8 flex items-center justify-center"
                         style={{ transform: `translateX(-${5 * index + 2}px)` }}
                       >
                         <Image
@@ -69,7 +72,9 @@ const RecentProjects = () => {
                           alt={icon}
                           height="1000"
                           width="1000"
-                          className="p-2"
+                          className={`${
+                            icon === "/next.svg" && "invert"
+                          } p-2  dark:invert-0  `}
                         />
                       </div>
                     ))}
@@ -79,7 +84,7 @@ const RecentProjects = () => {
                     as={Link}
                     href={project.link}
                     target="__blank"
-                    className="px-4 py-2 rounded-xl border border-purple text-purple text-xs font-bold flex items-center gap-2"
+                    className="px-4 py-2 rounded-xl border border-purpleDark dark:border-purple text-purpleDark dark:text-purple text-xs font-bold flex items-center gap-2"
                   >
                     <span>Checkout</span> <FaLocationArrow />
                   </CardItem>

@@ -6,7 +6,10 @@ const Clients = () => {
   return (
     <div id="testimonials" className="py-20">
       <h1 className="heading">
-        Kind words from <span className="text-purple">satisfied client</span>
+        Kind words from{" "}
+        <span className="text-purpleDark dark:text-purple">
+          satisfied client
+        </span>
       </h1>
       <div className="flex flex-col items-center max-lg:mt-10">
         <InfiniteMovingCards
@@ -22,14 +25,16 @@ const Clients = () => {
                 alt={company.name}
                 height={1000}
                 width={1000}
-                className="md:w-10 w-5"
+                className={`${
+                  company.name === "cloudinary" && "invert"
+                } dark:invert-0 md:w-10 w-5`}
               />
               <Image
                 src={company.nameImg}
                 alt={company.name}
                 height={1000}
                 width={1000}
-                className="md:w-24 w-20"
+                className="md:w-24 w-20 invert dark:invert-0"
               />
             </div>
           ))}

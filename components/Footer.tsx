@@ -24,12 +24,12 @@ const Footer = () => {
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
           Ready to take
-          <span className="text-purple">
+          <span className="text-purpleDark dark:text-purple">
             {" "}
             digital presence to the next level?
           </span>
         </h1>
-        <p className="text-white-200 md:mt-10 my-5 text-center">
+        <p className="text-neutral-500 dark:text-white-200 md:mt-10 my-5 text-center">
           Reach out to me today and let&apos;s discuss how I can help you
           achieve your goals.
         </p>
@@ -51,13 +51,14 @@ const Footer = () => {
           {socialMedia.map((social) => (
             <div
               key={social.id}
-              className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-150 bg-opacity-75 bg-black-200 rounded-lg border border-black-300"
+              className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-150 bg-opacity-75 bg-neutral-200 dark:bg-black-200 rounded-lg border border-black-300"
             >
               <Image
                 src={social.img}
                 alt={"social" + social.id}
                 width={20}
                 height={20}
+                className="invert dark:invert-0"
               />
             </div>
           ))}

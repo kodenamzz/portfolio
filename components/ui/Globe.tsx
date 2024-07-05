@@ -96,7 +96,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       _buildData();
       _buildMaterial();
     }
-  }, [globeRef.current]);
+  }, [globeRef.current, globeConfig.globeColor]);
 
   const _buildMaterial = () => {
     if (!globeRef.current) return;

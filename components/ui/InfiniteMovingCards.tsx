@@ -87,12 +87,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="w-[90vw] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-900 p-5 md:p-16 md:w-[60vw]"
-            style={{
-              backgroundColor: "rgb(4,7,29)",
-              background:
-                "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-            }}
+            className="w-[90vw] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-200 dark:border-slate-900 p-5 md:p-16 md:w-[60vw] dark:bg-[#04071D] dark:bg-gradient-to-r dark:from-[#04071D] dark:to-[#0C0E23] bg-neutral-200 bg-gradient-to-r from-neutral-200/80 to-neutral-200/80"
             key={idx}
           >
             <blockquote>
@@ -100,7 +95,7 @@ export const InfiniteMovingCards = ({
                 aria-hidden="true"
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
-              <span className=" relative z-20 text-sm md:text-lg leading-[1.6] text-white font-normal">
+              <span className=" relative z-20 text-sm md:text-lg leading-[1.6] text-gray-800 dark:text-white font-normal">
                 {item.quote}
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center">
@@ -109,10 +104,10 @@ export const InfiniteMovingCards = ({
                     <img src="/profile.svg" alt="profile" />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className=" text-xl leading-[1.6] text-white font-bold">
+                    <span className=" text-xl leading-[1.6] text-gray-900 dark:text-white font-bold">
                       {item.name}
                     </span>
-                    <span className=" text-sm leading-[1.6] text-white-200 font-normal">
+                    <span className=" text-sm leading-[1.6] text-gray-800 dark:text-white-200 font-normal">
                       {item.title}
                     </span>
                   </div>

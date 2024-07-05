@@ -2,23 +2,25 @@
 import React from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { useTheme } from "next-themes";
 
 const World = dynamic(() => import("./Globe").then((m) => m.World), {
   ssr: false,
 });
 
 export function GridGlobe() {
+  const { theme } = useTheme();
   const globeConfig = {
     pointSize: 4,
-    globeColor: "#062056",
+    globeColor: theme === "dark" ? "#062056" : "#668fff",
     showAtmosphere: true,
     atmosphereColor: "#FFFFFF",
     atmosphereAltitude: 0.1,
-    emissive: "#062056",
+    emissive: theme === "dark" ? "#062056" : "#668fff",
     emissiveIntensity: 0.1,
     shininess: 0.9,
     polygonColor: "rgba(255,255,255,0.7)",
-    ambientLight: "#38bdf8",
+    ambientLight: "#CBACF9",
     directionalLeftLight: "#ffffff",
     directionalTopLight: "#ffffff",
     pointLight: "#ffffff",
