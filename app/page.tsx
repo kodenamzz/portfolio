@@ -5,11 +5,11 @@ import RecentProjects from "@/components/RecentProjects";
 import { navItems } from "@/data";
 import Image from "next/image";
 import { FaHome } from "react-icons/fa";
-import Clients from "@/components/Clients";
 import Experience from "@/components/Experience";
 import Approaches from "@/components/Approaches";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
+import TechStacks from "@/components/TechStacks";
 
 export default function Home() {
   return (
@@ -18,8 +18,8 @@ export default function Home() {
         <FloatingNav navItems={navItems} />
         <Hero />
         <Grid />
+        <TechStacks />
         <RecentProjects />
-        <Clients />
         <Experience />
         {/* <Approaches /> */}
         <ContactForm />
