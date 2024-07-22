@@ -130,6 +130,14 @@ const ContactForm = () => {
               <BottomGradient />
             </button>
           </form>
+          <div className="mt-4">
+            <p className="text-neutral-600 text-md font-normal mt-2 dark:text-neutral-300 text-center xl:text-start">
+              Or reach out directly by emailing me at{" "}
+              <span className="text-purpleDark dark:text-purple">
+                abdkode.p@gmail.com
+              </span>
+            </p>
+          </div>
         </div>
       </div>
       <ToastContainer />

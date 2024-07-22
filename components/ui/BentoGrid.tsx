@@ -57,7 +57,7 @@ export const BentoGridItem = ({
 
     setTimeout(() => {
       setCopied(false);
-    }, 10000);
+    }, 5000);
   };
   return (
     <div
@@ -159,13 +159,22 @@ export const BentoGridItem = ({
                   }}
                 />
               </div>
-              <MagicButton
-                title={copied ? "Email copied" : "Copy my email"}
-                icon={<IoCopyOutline />}
-                position="left"
-                otherClasses="dark:!bg-[#161a31]"
-                handleClick={handelCopyEmail}
-              />
+              <div>
+                <p className="text-neutral-600 text-md font-normal mt-2 dark:text-neutral-300 text-center">
+                  Reach out directly by emailing me at{" "}
+                </p>
+                <p className="text-purpleDark dark:text-purple text-center">
+                  abdkode.p@gmail.com
+                </p>
+                <MagicButton
+                  title={copied ? "Email copied" : "Copy my email"}
+                  icon={<IoCopyOutline />}
+                  position="left"
+                  otherClasses="dark:!bg-[#161a31]"
+                  containerClasses="!mt-2"
+                  handleClick={handelCopyEmail}
+                />
+              </div>
             </div>
           )}
         </div>
