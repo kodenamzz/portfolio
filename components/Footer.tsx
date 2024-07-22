@@ -11,17 +11,8 @@ import { socialMedia } from "@/data";
 
 const Footer = () => {
   return (
-    <footer className="w-full pt-20 pb-10" id="contact">
-      <div className="w-full absolute left-0 -bottom-72 min-h-96">
-        <Image
-          height={1000}
-          width={1000}
-          src="/footer-grid.svg"
-          alt="footer-grid"
-          className="w-full h-full opacity-50"
-        />
-      </div>
-      <div className="flex flex-col items-center">
+    <footer className="w-full pt-20 pb-10">
+      <div className="flex flex-col items-center relative z-10">
         <h1 className="heading lg:max-w-[45vw]">
           Ready to take
           <span className="text-purpleDark dark:text-purple">
@@ -33,7 +24,7 @@ const Footer = () => {
           Reach out to me today and let&apos;s discuss how I can help you
           achieve your goals.
         </p>
-        <a href="mailto:abdkode.p@gmail.com">
+        <a href="#contact">
           <MagicButton
             title="Let's get in touch"
             icon={<RiArrowRightUpFill />}
@@ -63,6 +54,15 @@ const Footer = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="w-full absolute left-0 bottom-0 min-h-96 z-0">
+        <Image
+          height={1000}
+          width={1000}
+          src="/footer-grid.svg"
+          alt="footer-grid"
+          className="w-full h-full opacity-50"
+        />
       </div>
     </footer>
   );

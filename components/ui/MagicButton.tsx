@@ -9,7 +9,7 @@ export const MagicButton = ({
   containerClasses,
   otherClasses = "",
 }: {
-  title: string;
+  title: React.ReactNode;
   icon: React.ReactNode;
   position?: string;
   handleClick?: () => void;

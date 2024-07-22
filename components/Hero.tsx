@@ -2,6 +2,7 @@ import { FaLocationArrow } from "react-icons/fa";
 import { MagicButton } from "./ui/MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -22,19 +23,25 @@ const Hero = () => {
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-neutral-100 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
 
-      <div className="flex justify-center relative my-20 z-10">
-        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <h2 className="uppercase tracking-widest text-xs text-center font-medium dark:text-blue-100 text-black-100 max-w-80">
+      <div className="flex justify-center relative my-20 z-10 flex-col md:flex-row gap-16">
+        <div className="flex-grow flex flex-col items-center md:items-start justify-center w-full">
+          <h2 className="uppercase tracking-widest text-xs text-start font-medium dark:text-blue-100 text-black-100 max-w-80">
             Dynamic Web Magic with Next.js
           </h2>
 
           <TextGenerateEffect
-            className="text-center text-[40px] md:text-5xl lg:text-6xl"
-            words="Transforming Concepts into Seamless User Experience"
+            className="text-center md:text-start text-[32px] md:text-3xl lg:text-4xl"
+            primaryWords="Bringing Visions to Life with"
+            animateWords={[
+              "Smooth User Experiences",
+              "Seamless Interactions",
+              "Intuitive Interfaces",
+              "Fluid Designs",
+            ]}
           />
 
-          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi, I&apos;m Abdulkode, a Next.js Developer based Thailand
+          <p className="text-center md:text-start md:tracking-wider mb-4 text-sm md:text-md lg:text-xl">
+            Hi, I&apos;m Abdulkode, a Full-Stack Developer based in Thailand.
           </p>
 
           <a href="#about">
@@ -44,6 +51,15 @@ const Hero = () => {
               position={"left"}
             />
           </a>
+        </div>
+        <div className="md:w-[40vw] min-w-[400px] flex justify-center items-center p-10">
+          <Image
+            src="/dev.png"
+            alt="developer"
+            width={1000}
+            height={1000}
+            className="w-full h-auto"
+          />
         </div>
       </div>
     </div>

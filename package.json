@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@radix-ui/react-label": "^2.1.0",
     "@react-three/drei": "^9.107.3",
     "@react-three/fiber": "^8.16.8",
     "clsx": "^2.1.1",
@@ -18,16 +20,21 @@
     "next": "14.2.4",
     "next-theme": "^0.1.5",
     "next-themes": "^0.3.0",
+    "nodemailer": "^6.9.14",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.52.1",
     "react-icons": "^5.2.1",
+    "react-toastify": "^10.0.5",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.166.0",
-    "three-globe": "^2.31.1"
+    "three-globe": "^2.31.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/nodemailer": "^6.4.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",

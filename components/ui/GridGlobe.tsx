@@ -14,7 +14,7 @@ export function GridGlobe() {
     pointSize: 4,
     globeColor: theme === "dark" ? "#062056" : "#668fff",
     showAtmosphere: true,
-    atmosphereColor: "#FFFFFF",
+    atmosphereColor: "dark" ? "#FFFFFF" : "#000000",
     atmosphereAltitude: 0.1,
     emissive: theme === "dark" ? "#062056" : "#668fff",
     emissiveIntensity: 0.1,
