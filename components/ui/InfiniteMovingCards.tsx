@@ -2,6 +2,7 @@
 
 import { cn } from "@/utils/cn";
 import React, { useEffect, useState } from "react";
+import StackIcon from "tech-stack-icons";
 
 export const InfiniteMovingCards = ({
   items,
@@ -11,9 +12,8 @@ export const InfiniteMovingCards = ({
   className,
 }: {
   items: {
-    quote: string;
     name: string;
-    title: string;
+    label: string;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -80,40 +80,22 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          " flex min-w-full shrink-0 gap-16 py-4 w-max flex-nowrap",
+          " flex min-w-full shrink-0 gap-14 py-4 w-max flex-nowrap",
           start && "animate-scroll ",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
-        {items.map((item, idx) => (
+        {items.map((stack, idx) => (
           <li
-            className="w-[90vw] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-200 dark:border-slate-900 p-5 md:p-16 md:w-[60vw] dark:bg-[#04071D] dark:bg-gradient-to-r dark:from-[#04071D] dark:to-[#0C0E23] bg-neutral-200 bg-gradient-to-r from-neutral-200/80 to-neutral-200/80"
+            className="w-36 h-36 relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-200 dark:border-slate-900 dark:bg-[#04071D] dark:bg-gradient-to-r dark:from-[#04071D] dark:to-[#0C0E23] bg-neutral-200 bg-gradient-to-r from-neutral-200/80 to-neutral-200/80"
             key={idx}
           >
-            <blockquote>
-              <div
-                aria-hidden="true"
-                className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              ></div>
-              <span className=" relative z-20 text-sm md:text-lg leading-[1.6] text-gray-800 dark:text-white font-normal">
-                {item.quote}
-              </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <span className="flex flex-row gap-1 items-center">
-                  <div className="me-3">
-                    <img src="/profile.svg" alt="profile" />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className=" text-xl leading-[1.6] text-gray-900 dark:text-white font-bold">
-                      {item.name}
-                    </span>
-                    <span className=" text-sm leading-[1.6] text-gray-800 dark:text-white-200 font-normal">
-                      {item.title}
-                    </span>
-                  </div>
-                </span>
-              </div>
-            </blockquote>
+            <div className="flex flex-col w-full h-full justify-center items-center gap-2">
+              <StackIcon className="w-12 h-12" name={stack.name} />
+              <p className="text-sm md:text-lg text-gray-800 dark:text-white font-normal">
+                {stack.label}
+              </p>
+            </div>
           </li>
         ))}
       </ul>

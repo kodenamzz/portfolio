@@ -14,15 +14,15 @@ const Footer = () => {
     <footer className="w-full pt-20 pb-10">
       <div className="flex flex-col items-center relative z-10">
         <h1 className="heading lg:max-w-[45vw]">
-          Ready to take
+          Looking to elevate
           <span className="text-purpleDark dark:text-purple">
             {" "}
-            digital presence to the next level?
+            your digital presence?
           </span>
         </h1>
         <p className="text-neutral-500 dark:text-white-200 md:mt-10 my-5 text-center">
-          Reach out to me today and let&apos;s discuss how I can help you
-          achieve your goals.
+          Contact me today to explore how I can help you reach your objectives
+          and make an impact.
         </p>
         <a href="#contact">
           <MagicButton
