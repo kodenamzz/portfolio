@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Switch } from "./ui/Switch";
 import { Label } from "./ui/Label";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
@@ -8,6 +8,16 @@ import { useTheme } from "next-themes";
 
 const DarkModeSwitch = () => {
   const { setTheme, theme } = useTheme();
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckSwitch = (value: boolean) => {
+    // setIsChecked(value); // fix not checked at first time
+    setTheme(value ? "dark" : "light");
+  };
+
+  useEffect(() => {
+    setIsChecked(theme === "dark");
+  }, [theme]);
 
   return (
     <div className="flex justify-center">
@@ -20,8 +30,8 @@ const DarkModeSwitch = () => {
         </Label>
         <Switch
           id="theme"
-          checked={theme === "dark"}
-          onCheckedChange={(value) => setTheme(value ? "dark" : "light")}
+          checked={isChecked}
+          onCheckedChange={handleCheckSwitch}
         />
         <Label
           htmlFor="theme"

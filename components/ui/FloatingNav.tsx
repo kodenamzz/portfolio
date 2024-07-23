@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   motion,
   AnimatePresence,
@@ -10,22 +10,24 @@ import { cn } from "@/utils/cn";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
+import { useVisibleNav } from "@/context/NavProvider";
 
-export const FloatingNav = ({
-  navItems,
-  className,
-}: {
-  navItems: {
-    name: string;
-    link: string;
-    icon?: JSX.Element;
-  }[];
-  className?: string;
-}) => {
+import { MdHome, MdPerson, MdWork, MdEmail, MdCode } from "react-icons/md";
+
+export const navItems = [
+  { name: "Home", link: "#home", icon: <MdHome /> },
+  { name: "About", link: "#about", icon: <MdPerson /> },
+  { name: "Projects", link: "#projects", icon: <MdCode /> },
+  { name: "Experiences", link: "#experiences", icon: <MdWork /> },
+  { name: "Contact", link: "#contact", icon: <MdEmail /> },
+];
+
+export const FloatingNav = ({ className }: { className?: string }) => {
   const { scrollYProgress } = useScroll();
 
-  const [visible, setVisible] = useState(false);
+  const { visibleNav, setVisibleNav } = useVisibleNav();
   const { setTheme, theme } = useTheme();
+  const [mode, updateMode] = useState<string | undefined>("");
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     // Check if current is not undefined and is a number
@@ -33,18 +35,26 @@ export const FloatingNav = ({
       let direction = current! - scrollYProgress.getPrevious()!;
 
       if (direction < 0) {
-        setVisible(true);
+        setVisibleNav(true);
       } else {
-        setVisible(false);
+        setVisibleNav(false);
       }
     }
   });
 
+  const rerender = useCallback(() => {
+    updateMode(theme);
+  }, [theme]);
+
   useEffect(() => {
     if (window.scrollY < 0.5) {
-      setVisible(true);
+      setVisibleNav(true);
     }
   }, []);
+
+  useEffect(() => {
+    rerender();
+  }, [rerender]);
 
   return (
     <AnimatePresence mode="wait">
@@ -54,8 +64,8 @@ export const FloatingNav = ({
           y: -100,
         }}
         animate={{
-          y: visible ? 0 : -100,
-          opacity: visible ? 1 : 0,
+          y: visibleNav ? 0 : -100,
+          opacity: visibleNav ? 1 : 0,
         }}
         transition={{
           duration: 0.2,
@@ -74,14 +84,14 @@ export const FloatingNav = ({
             )}
           >
             <span className="block">{navItem.icon}</span>
-            <span className="block text-sm">{navItem.name}</span>
+            <span className="block text-sm  max-sm:hidden">{navItem.name}</span>
           </Link>
         ))}
         <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
         >
-          <span>{theme === "dark" ? <RiSunFill /> : <RiMoonFill />}</span>
+          <span>{mode === "dark" ? <RiSunFill /> : <RiMoonFill />}</span>
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
         </button>
       </motion.div>

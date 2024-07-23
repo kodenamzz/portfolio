@@ -90,7 +90,8 @@ const RecentProjects = () => {
                         target="__blank"
                         className="px-4 py-2 rounded-xl border border-purpleDark dark:border-purple text-purpleDark dark:text-purple text-xs font-bold flex items-center gap-2"
                       >
-                        <span>Checkout</span> <FaLocationArrow />
+                        <span className="max-sm:hidden">Checkout</span>{" "}
+                        <FaLocationArrow />
                       </CardItem>
                     )}
                   </div>

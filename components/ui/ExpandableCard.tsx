@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import { FaLocationArrow } from "react-icons/fa";
 import StackIcon from "tech-stack-icons";
+import { useVisibleNav } from "@/context/NavProvider";
 
 interface Project {
   id: number;
@@ -21,6 +22,7 @@ interface Props {
 }
 
 const ExpandableCard = ({ renderProject, projects }: Props) => {
+  const { setVisibleNav } = useVisibleNav();
   const [active, setActive] = useState<Project | boolean | null>(null);
   const id = useId();
   const ref = useRef<HTMLDivElement>(null);
@@ -43,6 +45,11 @@ const ExpandableCard = ({ renderProject, projects }: Props) => {
   }, [active]);
 
   useOutsideClick(ref, () => setActive(null));
+
+  const handleExpandCard = (project: Project) => {
+    setActive(project);
+    setVisibleNav(false);
+  };
 
   return (
     <>
@@ -82,7 +89,7 @@ const ExpandableCard = ({ renderProject, projects }: Props) => {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className=" p-6 w-[80vw] sm:w-[570px]  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-2xl overflow-x-auto custom-scrollbar"
+              className=" p-6 w-[80vw] sm:w-[570px]  h-3/4 md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-2xl overflow-x-auto custom-scrollbar"
             >
               <motion.div
                 layoutId={`image-${active.title}-${id}`}
@@ -151,7 +158,8 @@ const ExpandableCard = ({ renderProject, projects }: Props) => {
                       target="_blank"
                       className="px-4 py-2 rounded-xl border border-purpleDark dark:border-purple text-purpleDark dark:text-purple text-xs font-bold flex items-center gap-2"
                     >
-                      <span>Checkout</span> <FaLocationArrow />
+                      <span className="max-sm:hidden">Checkout</span>{" "}
+                      <FaLocationArrow />
                     </motion.a>
                   )}
                 </div>
@@ -164,7 +172,7 @@ const ExpandableCard = ({ renderProject, projects }: Props) => {
         <motion.div
           layoutId={`card-${project.title}-${id}`}
           key={project.title}
-          onClick={() => setActive(project)}
+          onClick={() => handleExpandCard(project)}
           className="cursor-pointer"
         >
           {renderProject(project)}
