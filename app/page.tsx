@@ -10,6 +10,7 @@ import Approaches from "@/components/Approaches";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import TechStacks from "@/components/TechStacks";
+import DarkModeSwitch from "@/components/DarkModeSwitch";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <div className="max-w-7xl w-full">
         <FloatingNav navItems={navItems} />
         <Hero />
+        <DarkModeSwitch />
         <Grid />
         <TechStacks />
         <RecentProjects />
