@@ -7,10 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { sendEmail } from "@/utils/send-email";
-import { ToastContainer, toast } from "react-toastify";
-
-import "react-toastify/dist/ReactToastify.css";
-import { useTheme } from "next-themes";
+import { toast } from "sonner";
 import Image from "next/image";
 
 export const formDataSchema = z.object({
@@ -21,7 +18,6 @@ export const formDataSchema = z.object({
 export type FormData = z.infer<typeof formDataSchema>;
 
 const ContactForm = () => {
-  const { theme } = useTheme();
   const { register, handleSubmit, formState, reset } = useForm<FormData>({
     resolver: zodResolver(formDataSchema),
     defaultValues: {
@@ -35,23 +31,13 @@ const ContactForm = () => {
     try {
       await sendEmail(data);
       reset();
-      toast(
-        "Thank you! Your message has been successfully sent. I will contact you very soon!",
-        {
-          theme: theme ?? "light",
-          type: "success",
-          position: "bottom-right",
-        }
+      toast.success(
+        "Thank you! Your message has been successfully sent. I will contact you very soon!"
       );
     } catch (error) {
       console.log("error", error);
-      toast(
-        "Sorry, something went wrong while sending your message. Please contact me directly at abdkode.p@gmail.com",
-        {
-          theme: theme ?? "light",
-          type: "error",
-          position: "bottom-right",
-        }
+      toast.error(
+        "Sorry, something went wrong while sending your message. Please contact me directly at abdkode.p@gmail.com"
       );
     }
   };
@@ -140,7 +126,6 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };
