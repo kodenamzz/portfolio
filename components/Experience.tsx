@@ -1,20 +1,20 @@
 import { workExperience } from "@/data";
 import React from "react";
-import { Button } from "./ui/MovingBorders";
+import { MovingButton } from "./ui/MovingBorders";
 import Image from "next/image";
 
 const Experience = () => {
   return (
-    <div id="experience" className="py-20">
+    <div id="experiences" className="py-20">
       <h1 className="heading">
         My{" "}
         <span className="text-purpleDark dark:text-purple">
-          work experience
+          work experiences
         </span>
       </h1>
-      <div className="w-full mt-12 grid lg:grid-cols-4 grid-cols-1 gap-10">
+      <div className="w-full mt-12 grid grid-cols-1 gap-10">
         {workExperience.map((card) => (
-          <Button
+          <MovingButton
             key={card.id}
             borderRadius="1.75rem"
             duration={Math.floor(Math.random() * 10000) + 10000}
@@ -32,12 +32,23 @@ const Experience = () => {
                 <h1 className="text-start text-xl md:text-2xl font-bold">
                   {card.title}
                 </h1>
-                <p className="text-start text-neutral-500 dark:text-white-100 mt-3 font-semibold">
-                  {card.desc}
-                </p>
+                <h2 className="uppercase tracking-widest text-xs text-start font-medium dark:text-blue-100 text-black-100">
+                  {card.place} ·{" "}
+                  <span className="dark:text-blue-200 text-black-200">
+                    {card.period}
+                  </span>
+                </h2>
+                {card.desc.map((des, idx) => (
+                  <p
+                    key={idx}
+                    className="text-start text-neutral-500 dark:text-white-100 mt-3 font-semibold"
+                  >
+                    {des}
+                  </p>
+                ))}
               </div>
             </div>
-          </Button>
+          </MovingButton>
         ))}
       </div>
     </div>

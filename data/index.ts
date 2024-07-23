@@ -1,10 +1,3 @@
-export const navItems = [
-  { name: "About", link: "#about" },
-  { name: "Projects", link: "#projects" },
-  { name: "Testimonials", link: "#testimonials" },
-  { name: "Contact", link: "#contact" },
-];
-
 export const gridItems = [
   {
     id: 1,
@@ -238,31 +231,48 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: "Frontend Engineer Intern",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+    title: "Full-stack Developer",
+    place: "Excellent Digital Development Co.,Ltd",
+    period: "Oct 2019 - Apr 2024",
+    desc: [
+      "As a Full Stack Web Developer, I specialize in both front-end and back-end technologies, including React.js, Next.js, Redux, Material-UI, HTML, CSS, JavaScript, TypeScript, Laravel, Node.js, and MongoDB. I design and implement software solutions, optimize code, and manage servers, databases, and APIs, focusing on building responsive, high-performance applications while ensuring security and scalability.",
+      "In my recent role, I led the development of enablesurvey.com, an online survey platform featuring over 20 question types, dynamic survey flows, and visual result displays, which enhanced user experience and data analysis. I also developed a comprehensive back-office monitoring system for managing surveys, tracking user activity, handling order management, and monitoring statistics. Additionally, I created a mobile food ordering app using Flutter, providing users with a seamless and user-friendly ordering experience.",
+    ],
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
   {
     id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+    title: "Programmer Assistant (Internship)",
+    place: "M.D.Soft Co.,Ltd.",
+    period: "Jan 2019 - Apr 2019",
+    desc: [
+      "As a Programmer Assistant, I provided valuable support in software development projects, working closely with programmers to effectively implement solutions and achieve project goals. I took a hands-on approach in designing and developing engaging web pages using HTML, CSS, JavaScript, and company-specific tools, ensuring adherence to best practices in web development with a focus on user experience and functionality to meet project requirements and enhance overall usability.",
+    ],
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp2.svg",
   },
   {
     id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp3.svg",
+    title: "Experience at YICMG",
+    place: "Shanghai, China",
+    period: "July 2018,  July 2019",
+    desc: [
+      "Participated in the Youth Innovation Competition on Lancang-Mekong Region’s Governance and Development (YICMG) and was awarded the first prize for my Travel Guide Application project. This app helps tourists by providing destination information, activity suggestions, and recommendations for next destinations. The experience included teamwork, field research, and innovation instruction.",
+    ],
+    className: "md:col-span-2",
+    thumbnail: "/yicmg.png",
   },
   {
     id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
-    className: "md:col-span-2",
-    thumbnail: "/exp4.svg",
+    title: "Teaching Assistant and Instructor",
+    place: "Prince of Songkla University",
+    period: "Aug 2018 - Dec 2018",
+    desc: [
+      "I assisted teachers in training students on web development, design, and techniques, as well as conducted classes to teach these subjects. Additionally, I reviewed and graded students' quizzes and assignments and performed various other tasks as assigned.",
+    ],
+    className: "md:col-span-2", // change to md:col-span-2
+    thumbnail: "/exp3.svg",
   },
 ];
 
