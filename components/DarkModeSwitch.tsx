@@ -20,7 +20,10 @@ const DarkModeSwitch = () => {
   }, [theme]);
 
   return (
-    <div className="flex justify-center relative z-50 mb-20 md:mb-28">
+    <div className="flex justify-center flex-col items-center relative z-50 mb-20 md:mb-28 w-full">
+      <p className="text-sm text-center lg:text-start font-medium dark:text-blue-100 text-black-100 mb-4">
+        Unleash the Power of Dark Mode!
+      </p>
       <div className="flex items-center space-x-3">
         <Label
           htmlFor="theme"

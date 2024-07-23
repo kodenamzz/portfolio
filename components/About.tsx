@@ -87,7 +87,7 @@ const About = () => {
                       Computer Management
                     </h2>
                     <p className="text-center lg:text-start text-xs text-neutral-500 dark:text-white-100 mt-2 font-semibold">
-                      GPA : 3.32/4.00 ·{" "}
+                      GPA : 3.32/4.00 (Second Class Honors) ·{" "}
                       <span className="dark:text-blue-200 text-black-200">
                         Aug 2015 - May 2019
                       </span>
