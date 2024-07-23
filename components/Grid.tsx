@@ -5,11 +5,11 @@ import { gridItems } from "@/data";
 const Grid = () => {
   return (
     <section id="about">
-      <BentoGrid>
+      {/* <BentoGrid>
         {gridItems.map((item) => (
           <BentoGridItem key={item.id} {...item} />
         ))}
-      </BentoGrid>
+      </BentoGrid> */}
     </section>
   );
 };

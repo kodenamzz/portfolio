@@ -61,7 +61,7 @@ const RecentProjects = () => {
                   <CardItem
                     as="p"
                     translateZ="60"
-                    className=" text-sm lg:font-normal lg:text-xl font-light line-clamp-2 mt-2 dark:text-neutral-300 text-neutral-500"
+                    className="text-sm lg:font-normal lg:text-xl font-light line-clamp-2 mt-2 dark:text-neutral-300 text-neutral-500"
                   >
                     {project.des}
                   </CardItem>

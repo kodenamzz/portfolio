@@ -1,6 +1,5 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
 
@@ -8,8 +7,28 @@ const World = dynamic(() => import("./Globe").then((m) => m.World), {
   ssr: false,
 });
 
-export function GridGlobe() {
+interface Props {
+  heading?: React.ReactNode;
+  subHeading?: React.ReactNode;
+  children?: React.ReactNode;
+}
+
+export function GridGlobe({ heading, subHeading, children }: Props) {
   const { theme } = useTheme();
+
+  const [hideGlobe, setHideGlobe] = useState(false);
+
+  useEffect(() => {
+    setHideGlobe(true);
+    let timeOut = setTimeout(() => {
+      setHideGlobe(false);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeOut);
+    };
+  }, [theme]);
+
   const globeConfig = {
     pointSize: 4,
     globeColor: theme === "dark" ? "#062056" : "#668fff",
@@ -397,12 +416,15 @@ export function GridGlobe() {
   ];
 
   return (
-    <div className="flex items-center justify-center absolute -left-5 top-36 md:top-40 w-full h-full">
-      <div className="max-w-7xl mx-auto w-full relative overflow-hidden px-4 h-96">
-        <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
-        <div className="absolute w-full h-72 md:h-full z-10">
-          <World data={sampleArcs} globeConfig={globeConfig} />;
+    <div className="flex flex-row items-center justify-center py-24 h-full md:min-h-auto relative w-full">
+      <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:min-h-[40rem] px-4">
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-full bottom-0 inset-x-0 h-80 bg-gradient-to-b pointer-events-none select-none from-transparent to-neutral-100 dark:to-black-100 z-20" />
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-full bottom-0 sm:-bottom-20 h-72 md:h-full z-10">
+          {!hideGlobe && <World data={sampleArcs} globeConfig={globeConfig} />}
         </div>
+        {/* <div className="flex relative z-50 -bottom-16 justify-center flex-col items-center w-full mt-6 md:mt-80">
+          {children}
+        </div> */}
       </div>
     </div>
   );

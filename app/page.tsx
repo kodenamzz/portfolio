@@ -1,13 +1,13 @@
-import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import RecentProjects from "@/components/RecentProjects";
 import Experience from "@/components/Experience";
-import Approaches from "@/components/Approaches";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import TechStacks from "@/components/TechStacks";
 import DarkModeSwitch from "@/components/DarkModeSwitch";
+import About from "@/components/About";
+import Grid from "@/components/Grid";
 
 export default function Home() {
   return (
@@ -16,6 +16,7 @@ export default function Home() {
         <FloatingNav />
         <Hero />
         <DarkModeSwitch />
+        <About />
         <Grid />
         <TechStacks />
         <RecentProjects />

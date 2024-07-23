@@ -20,7 +20,7 @@ const DarkModeSwitch = () => {
   }, [theme]);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center relative z-50 mb-20 md:mb-28">
       <div className="flex items-center space-x-3">
         <Label
           htmlFor="theme"
