@@ -67,7 +67,8 @@ export const projects = [
     id: 1,
     title: "Online Survey Platform",
     des: "Led the development of a comprehensive online survey platform with diverse question types, dynamic logic triggers, and visual result displays, enhancing user experience and data analysis for improved decision-making.",
-    img: "/p1.svg",
+    img: "/eanblesv.png",
+    isMobile: false,
     iconLists: [
       "reactjs",
       "materialui",
@@ -83,7 +84,8 @@ export const projects = [
     id: 2,
     title: "Survey Back-Office Monitoring System",
     des: "Developed a robust back-office monitoring system for surveys, covering user activity tracking, package order management, and survey statistics, enhancing administrative oversight and efficient platform management.",
-    img: "/p2.svg",
+    img: "/backoffic-dev.png",
+    isMobile: false,
     iconLists: [
       "reactjs",
       "materialui",
@@ -98,7 +100,8 @@ export const projects = [
     id: 3,
     title: "Dev Forum (In Developing)",
     des: "Creating a developer forum focused on Q&A, enabling users to ask questions, share knowledge, and solve problems collaboratively within the tech community.",
-    img: "/p3.svg",
+    img: "/dev-forum.png",
+    isMobile: false,
     iconLists: ["reactjs", "nextjs2", "tailwindcss", "mongodb"],
     link: "https://github.com/kodenamzz/dev_forum_nextjs",
   },
@@ -106,9 +109,10 @@ export const projects = [
     id: 4,
     title: "Order Food Online Application",
     des: "Developed a mobile application for ordering food online using Flutter, allowing users to place orders conveniently from anywhere with a seamless and intuitive interface.",
-    img: "/p4.svg",
+    img: "/flutter-app.jpg",
+    isMobile: true,
     iconLists: ["flutter", "laravel", "postgresql", "dart", "android"],
-    link: "",
+    link: "https://github.com/kodenamzz/ordering_food_online_flutter",
   },
 ];
 
@@ -232,7 +236,7 @@ export const workExperience = [
   {
     id: 1,
     title: "Full-stack Developer",
-    place: "Excellent Digital Development Co.,Ltd",
+    place: "Excellent Digital Development Co.,Ltd, Bangkok",
     period: "Oct 2019 - Apr 2024",
     desc: [
       "As a Full Stack Web Developer, I specialize in both front-end and back-end technologies, including React.js, Next.js, Redux, Material-UI, HTML, CSS, JavaScript, TypeScript, Laravel, Node.js, and MongoDB. I design and implement software solutions, optimize code, and manage servers, databases, and APIs, focusing on building responsive, high-performance applications while ensuring security and scalability.",
@@ -244,7 +248,7 @@ export const workExperience = [
   {
     id: 2,
     title: "Programmer Assistant (Internship)",
-    place: "M.D.Soft Co.,Ltd.",
+    place: "M.D.Soft Co.,Ltd. Bangkok",
     period: "Jan 2019 - Apr 2019",
     desc: [
       "As a Programmer Assistant, I provided valuable support in software development projects, working closely with programmers to effectively implement solutions and achieve project goals. I took a hands-on approach in designing and developing engaging web pages using HTML, CSS, JavaScript, and company-specific tools, ensuring adherence to best practices in web development with a focus on user experience and functionality to meet project requirements and enhance overall usability.",
@@ -266,7 +270,7 @@ export const workExperience = [
   {
     id: 4,
     title: "Teaching Assistant and Instructor",
-    place: "Prince of Songkla University",
+    place: "Prince of Songkla University, Trang",
     period: "Aug 2018 - Dec 2018",
     desc: [
       "I assisted teachers in training students on web development, design, and techniques, as well as conducted classes to teach these subjects. Additionally, I reviewed and graded students' quizzes and assignments and performed various other tasks as assigned.",

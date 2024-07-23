@@ -14,6 +14,7 @@ interface Project {
   img: string;
   iconLists: string[];
   link: string;
+  isMobile: boolean;
 }
 
 interface Props {
@@ -108,7 +109,9 @@ const ExpandableCard = ({ renderProject, projects }: Props) => {
                   src={active.img}
                   height="1000"
                   width="1000"
-                  className="z-10 absolute bottom-0 w-10/12"
+                  className={`z-10 absolute -bottom-5 ${
+                    active.isMobile ? "w-1/2" : "w-10/12"
+                  } h-[110%] object-cover object-left-top rotate-[5deg]`}
                   alt="cover"
                 />
               </motion.div>

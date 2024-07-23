@@ -48,7 +48,9 @@ const RecentProjects = () => {
                       src={project.img}
                       height="1000"
                       width="1000"
-                      className="z-10 absolute bottom-0 w-10/12"
+                      className={`z-10 absolute -bottom-5 ${
+                        project.isMobile ? "w-1/2" : "w-10/12"
+                      } h-[110%] object-cover object-left-top rotate-[5deg]`}
                       alt="cover"
                     />
                   </CardItem>
