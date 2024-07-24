@@ -112,7 +112,8 @@ export const projects = [
     img: "/flutter-app.jpg",
     isMobile: true,
     iconLists: ["flutter", "laravel", "postgresql", "dart", "android"],
-    link: "https://github.com/kodenamzz/ordering_food_online_flutter",
+    link: "",
+    // link: "https://github.com/kodenamzz/ordering_food_online_flutter",
   },
 ];
 
