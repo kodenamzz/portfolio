@@ -43,8 +43,10 @@ const ContactForm = () => {
   };
   return (
     <div id="contact" className="py-20 relative z-10">
-      <h1 className="heading">Contact Me</h1>
-      <div className="flex mt-12 w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-neutral-200/[0.8] dark:bg-slate-900/[0.8] ">
+      <h1 className="heading">
+        Contact <span className="text-purpleDark dark:text-purple">Me</span>
+      </h1>
+      <div className="flex mt-12 w-full mx-auto rounded-2xl p-4 md:p-8 shadow-input bg-neutral-200/[0.8] dark:bg-slate-900/[0.8] ">
         <div className="flex-1 justify-center items-center hidden xl:flex">
           <Image
             src="/touch-my-hand.png"
