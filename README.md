@@ -1,3 +1,22 @@
+<div align="center">
+  <br />
+    <a href="https://abdkode.vercel.app/" target="_blank">
+      <img src="https://i.ibb.co/DMyPtYF/Screenshot-2024-08-12-061844-modified.png" alt="Project Banner">
+    </a>
+  <br />
+  <br />
+  <div>
+    <img src="https://img.shields.io/badge/-Next_JS-black?logoColor=white&logo=nextdotjs&color=000000" alt="nextdotjs" />
+    <img src="https://img.shields.io/badge/-Framer-black?logoColor=white&logo=framer&color=0055FF" alt="framer" />
+    <img src="https://img.shields.io/badge/-Three_JS-black?logoColor=white&logo=threedotjs&color=000000" alt="three.js" />
+    <img src="https://img.shields.io/badge/-Tailwind_CSS-black?logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
+  </div>
+
+  <h3 align="center">A Next.js Portfolio</h3>
+</div>
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
