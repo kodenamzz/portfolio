@@ -102,7 +102,7 @@ export const projects = [
     des: "Creating a developer forum focused on Q&A, enabling users to ask questions, share knowledge, and solve problems collaboratively within the tech community.",
     img: "/dev-forum.png",
     isMobile: false,
-    iconLists: ["reactjs", "nextjs2", "tailwindcss", "mongodb"],
+    iconLists: ["reactjs", "nextjs2", "tailwindcss","nodejs", "nestjs", "mongodb"],
     link: "https://github.com/kodenamzz/dev_forum_nextjs",
   },
   {
