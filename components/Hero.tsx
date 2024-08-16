@@ -3,8 +3,10 @@ import { MagicButton } from "./ui/MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const Hero = () => {
+  const t = useTranslations("HomePage");
   return (
     <div className="pb-20 pt-36" id="home">
       <div>
@@ -27,6 +29,9 @@ const Hero = () => {
         <div className="flex-grow flex flex-col items-center md:items-start justify-center w-full">
           <h2 className="uppercase tracking-widest text-xs text-start font-medium dark:text-blue-100 text-black-100 max-w-80">
             Dynamic Web Magic with Next.js
+          </h2>
+          <h2 className="uppercase tracking-widest text-xs text-start font-medium dark:text-blue-100 text-black-100 max-w-80">
+            {t("title")}
           </h2>
 
           <TextGenerateEffect
@@ -56,8 +61,9 @@ const Hero = () => {
           <Image
             src="/dev.png"
             alt="developer"
-            width={1000}
-            height={1000}
+            priority
+            width={500}
+            height={500}
             className="w-full h-auto"
           />
         </div>

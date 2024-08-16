@@ -7,7 +7,6 @@ import ContactForm from "@/components/ContactForm";
 import TechStacks from "@/components/TechStacks";
 import DarkModeSwitch from "@/components/DarkModeSwitch";
 import About from "@/components/About";
-import Grid from "@/components/Grid";
 
 export default function Home() {
   return (
@@ -17,11 +16,9 @@ export default function Home() {
         <Hero />
         <DarkModeSwitch />
         <About />
-        <Grid />
         <TechStacks />
         <RecentProjects />
         <Experience />
-        {/* <Approaches /> */}
         <ContactForm />
         <Footer />
       </div>
