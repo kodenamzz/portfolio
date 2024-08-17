@@ -7,10 +7,22 @@ import { FaLocationArrow } from "react-icons/fa";
 import StackIcon from "tech-stack-icons";
 import { useVisibleNav } from "@/context/NavProvider";
 
-interface Project {
+type FilterKeysByPrefix<T, Prefix extends string> = {
+  [K in keyof T as K extends `${infer _Prefix}${Prefix}` ? K : never]: T[K];
+};
+
+// Filter keys ending with '-Title'
+type ProjectTitle = keyof FilterKeysByPrefix<
+  IntlMessages["Projects"],
+  "-Title"
+>;
+// Filter keys ending with '-Desc'
+type ProjectDesc = keyof FilterKeysByPrefix<IntlMessages["Projects"], "-Desc">;
+
+export interface IProject {
   id: number;
-  title: string;
-  des: string;
+  title: ProjectTitle;
+  des: ProjectDesc;
   img: string;
   iconLists: string[];
   link: string;
@@ -18,13 +30,13 @@ interface Project {
 }
 
 interface Props {
-  renderProject: (project: Project) => React.JSX.Element;
-  projects: Project[];
+  renderProject: (project: IProject) => React.JSX.Element;
+  projects: IProject[];
 }
 
 const ExpandableCard = ({ renderProject, projects }: Props) => {
   const { setVisibleNav } = useVisibleNav();
-  const [active, setActive] = useState<Project | boolean | null>(null);
+  const [active, setActive] = useState<IProject | boolean | null>(null);
   const id = useId();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -47,7 +59,7 @@ const ExpandableCard = ({ renderProject, projects }: Props) => {
 
   useOutsideClick(ref, () => setActive(null));
 
-  const handleExpandCard = (project: Project) => {
+  const handleExpandCard = (project: IProject) => {
     setActive(project);
     setVisibleNav(false);
   };

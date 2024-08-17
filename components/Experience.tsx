@@ -2,14 +2,47 @@ import { workExperience } from "@/data";
 import React from "react";
 import { MovingButton } from "./ui/MovingBorders";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+
+type FilterKeysByPrefix<T, Prefix extends string> = {
+  [K in keyof T as K extends `${infer _Prefix}${Prefix}` ? K : never]: T[K];
+};
+
+type ExperiencesTitle = keyof FilterKeysByPrefix<
+  IntlMessages["Experiences"],
+  "-Title"
+>;
+type ExperiencesPlace = keyof FilterKeysByPrefix<
+  IntlMessages["Experiences"],
+  "-Place"
+>;
+type ExperiencesPeriod = keyof FilterKeysByPrefix<
+  IntlMessages["Experiences"],
+  "-Period"
+>;
+type ExperiencesDesc = keyof FilterKeysByPrefix<
+  IntlMessages["Experiences"],
+  "-Desc"
+>;
+
+export interface IExperiences {
+  id: number;
+  title: ExperiencesTitle;
+  place: ExperiencesPlace;
+  period: ExperiencesPeriod;
+  desc: ExperiencesDesc[];
+  className: string;
+  thumbnail: string;
+}
 
 const Experience = () => {
+  const t = useTranslations("Experiences");
   return (
     <div id="experiences" className="py-20">
       <h1 className="heading">
-        My{" "}
+        {t("My")}{" "}
         <span className="text-purpleDark dark:text-purple">
-          work experiences
+          {t("WorkExperiences")}
         </span>
       </h1>
       <div className="w-full mt-12 grid grid-cols-1 gap-10">
@@ -30,12 +63,12 @@ const Experience = () => {
               />
               <div className="lg:ms-5">
                 <h1 className="text-start text-xl md:text-2xl font-bold">
-                  {card.title}
+                  {t(card.title)}
                 </h1>
                 <h2 className="uppercase tracking-widest text-xs text-start font-medium dark:text-blue-100 text-black-100">
-                  {card.place} ·{" "}
+                  {t(card.place)} ·{" "}
                   <span className="dark:text-blue-200 text-black-200">
-                    {card.period}
+                    {t(card.period)}
                   </span>
                 </h2>
                 {card.desc.map((des, idx) => (
@@ -43,7 +76,7 @@ const Experience = () => {
                     key={idx}
                     className="text-start text-neutral-500 dark:text-white-100 mt-3 font-semibold"
                   >
-                    {des}
+                    {t(des)}
                   </p>
                 ))}
               </div>

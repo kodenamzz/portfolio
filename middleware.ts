@@ -1,12 +1,13 @@
 import createMiddleware from "next-intl/middleware";
+import { defaultLocale, localePrefix, locales } from "./i18n";
 
 export default createMiddleware({
   // A list of all locales that are supported
-  locales: ["en", "th"],
+  locales: locales,
 
   // Used when no locale matches
-  defaultLocale: "en",
-  localePrefix: "as-needed",
+  defaultLocale: defaultLocale,
+  localePrefix: localePrefix,
   localeDetection: false,
 });
 

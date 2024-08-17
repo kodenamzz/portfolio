@@ -1,33 +1,27 @@
 import Image from "next/image";
 import { MagicButton } from "./ui/MagicButton";
-import { FaMailBulk, FaMailchimp } from "react-icons/fa";
-import {
-  RiArrowLeftDownFill,
-  RiArrowRightUpFill,
-  RiMailAddLine,
-  RiMailCheckLine,
-} from "react-icons/ri";
-import { socialMedia } from "@/data";
+import { RiArrowRightUpFill } from "react-icons/ri";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const Footer = () => {
+  const t = useTranslations("Footer");
   return (
     <footer className="w-full pt-20 pb-10">
       <div className="flex flex-col items-center relative z-10">
         <h1 className="heading lg:max-w-[45vw]">
-          Looking to elevate
+          {t("Heading1")}
           <span className="text-purpleDark dark:text-purple">
             {" "}
-            your digital presence?
+            {t("Heading2")}
           </span>
         </h1>
         <p className="text-neutral-500 dark:text-white-200 md:mt-10 my-5 text-center">
-          Contact me today to explore how I can help you reach your objectives
-          and make an impact.
+          {t("ContactMeMessage")}
         </p>
         <a href="#contact">
           <MagicButton
-            title="Let's get in touch"
+            title={t("LetsGetInTouch")}
             icon={<RiArrowRightUpFill />}
             position="right"
           />
@@ -36,7 +30,9 @@ const Footer = () => {
 
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center gap-4 relative z-[9999]">
         <p className="md:text-base text-sm md:font-normal font-light">
-          Copyright © {new Date().getFullYear()} Abdulkode Pohlor
+          {t("Copyright")}
+          {new Date().getFullYear()}
+          {t("CopyrightName")}
         </p>
 
         <div className="flex items-center md:gap-3 gap-6">

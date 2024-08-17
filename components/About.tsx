@@ -4,8 +4,10 @@ import Image from "next/image";
 import { BackgroundGradientAnimation } from "./ui/GradientBg";
 import Link from "next/link";
 import CopyMyEmail from "./ui/CopyMyEmail";
+import { useTranslations } from "next-intl";
 
 const About = () => {
+  const t = useTranslations("About");
   return (
     <div id="about" className="relative my-16">
       {/* <motion.div
@@ -24,10 +26,11 @@ const About = () => {
       > */}
       <div className="relative z-40 flex justify-center flex-col items-center w-full">
         <h1 className="heading">
-          About <span className="text-purpleDark dark:text-purple">Me</span>
+          {t("About")}{" "}
+          <span className="text-purpleDark dark:text-purple">{t("Me")}</span>
         </h1>
         <h2 className="text-center text-xl md:text-2xl font-bold mt-10 ">
-          👋 Hey, I&apos;m Abdulkode Pohlor
+          👋 {t("GreetingWithName")}
         </h2>
       </div>
       {/* </motion.div> */}
@@ -38,21 +41,14 @@ const About = () => {
       <div className="flex relative z-50 justify-center flex-col items-center w-full mt-6 md:mt-80">
         <div className="flex flex-col items-center">
           <p className="text-sm indent-9 lg:font-normal lg:text-xl font-semibold mt-2 dark:text-neutral-300 text-neutral-900 w-[90vw] md:w-[70vw]">
-            I am a passionate Full-stack Developer with about 5 years of
-            experience, specializing in web development and adept at building
-            innovative and user-friendly applications. Proficient in React.js,
-            Next.js, JavaScript, TypeScript, CSS, Material UI, and Tailwind CSS,
-            I also have substantial backend experience with Node.js and PHP
-            Laravel. Constantly eager to learn and adapt to new technologies, I
-            aim to leverage my skills to contribute to dynamic projects and
-            deliver high-quality solutions that exceed client expectations.
+            {t("MessageAboutMe")}
           </p>
 
           <div className="flex flex-col md:flex-row gap-6 w-full mt-6">
             <div className="flex-1 md:flex-[2_2_0%] min-h-44 relative overflow-hidden rounded-3xl hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4 border dark:border-white/[0.1] border-gray/[0.1]   dark:bg-[#04071D] dark:bg-gradient-to-r dark:from-[#04071D] dark:to-[#0C0E23] bg-neutral-200 bg-gradient-to-r from-neutral-200/80 to-neutral-200/80">
               <div className="hover:translate-x-2 transition duration-200 h-full p-4">
                 <h3 className="text-xl text-purpleDark dark:text-purple font-bold text-center mb-2 pl-5">
-                  Collegiate Education
+                  {t("CollegiateEducation")}
                 </h3>
                 <div className="flex lg:flex-row flex-col items-center gap-2">
                   <Image
@@ -64,16 +60,15 @@ const About = () => {
                   />
                   <div className="lg:ms-5">
                     <h1 className="text-center lg:text-start uppercase text-md font-bold">
-                      Prince of Songkla University, Thailand
+                      {t("University")}
                     </h1>
                     <h2 className="tracking-widest text-sm text-center lg:text-start font-medium dark:text-blue-100 text-black-100">
-                      Bachelor of Business Administration in Information and
-                      Computer Management
+                      {t("Degree")}
                     </h2>
                     <p className="text-center lg:text-start text-xs text-neutral-500 dark:text-white-100 mt-2 font-semibold">
-                      GPA : 3.32/4.00 (Second Class Honors) ·{" "}
+                      {t("GPA")} ·{" "}
                       <span className="dark:text-blue-200 text-black-200">
-                        Aug 2015 - May 2019
+                        {t("UniversityPeriod")}
                       </span>
                     </p>
                   </div>
@@ -125,9 +120,12 @@ const About = () => {
                       </div>
                     </div>
                     <p className="text-md font-normal mt-2 text-neutral-300 text-center">
-                      Reach out directly by emailing me
+                      {t("ReachOutDirectly")}
                     </p>
-                    <CopyMyEmail />
+                    <CopyMyEmail
+                      copyText={t("CopyEmail")}
+                      copiedText={t("EmailCopied")}
+                    />
                   </div>
                 </div>
               </div>

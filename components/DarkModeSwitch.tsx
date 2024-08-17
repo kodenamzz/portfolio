@@ -5,8 +5,10 @@ import { Switch } from "./ui/Switch";
 import { Label } from "./ui/Label";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 
 const DarkModeSwitch = () => {
+  const t = useTranslations("DarkModeSwitch");
   const { setTheme, theme } = useTheme();
   const [isChecked, setIsChecked] = useState(false);
 
@@ -22,16 +24,17 @@ const DarkModeSwitch = () => {
   return (
     <div className="flex justify-center flex-col items-center relative z-50 mb-20 md:mb-28 w-full">
       <p className="text-sm text-center lg:text-start font-medium dark:text-blue-100 text-black-100 mb-4">
-        Unleash the Power of Dark Mode!
+        {t("PowerOfDarkMode")}
       </p>
       <div className="flex items-center space-x-3">
         <Label
           htmlFor="theme"
           className="flex gap-2 font-bold lg:text-2xl md:text-xl text-base items-center"
         >
-          Light Mode <RiSunFill />
+          {t("LightMode")} <RiSunFill />
         </Label>
         <Switch
+          name="theme"
           id="theme"
           checked={isChecked}
           onCheckedChange={handleCheckSwitch}
@@ -41,7 +44,7 @@ const DarkModeSwitch = () => {
           className="flex gap-2 font-bold lg:text-2xl md:text-xl text-base items-center"
         >
           <RiMoonFill />
-          Dark Mode
+          {t("DarkMode")}
         </Label>
       </div>
     </div>

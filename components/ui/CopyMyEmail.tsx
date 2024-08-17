@@ -6,7 +6,13 @@ import { MagicButton } from "./MagicButton";
 import Lottie from "lottie-react";
 import animationData from "@/data/confetti.json";
 
-const CopyMyEmail = () => {
+const CopyMyEmail = ({
+  copyText,
+  copiedText,
+}: {
+  copyText: string;
+  copiedText: string;
+}) => {
   const [copied, setCopied] = useState(false);
   const handelCopyEmail = () => {
     navigator.clipboard.writeText("abdkode.p@gmail.com");
@@ -29,7 +35,7 @@ const CopyMyEmail = () => {
         />
       </div>
       <MagicButton
-        title={copied ? "Email copied" : "Copy my email"}
+        title={copied ? copiedText : copyText}
         icon={<IoCopyOutline />}
         position="left"
         otherClasses="dark:!bg-[#161a31]"

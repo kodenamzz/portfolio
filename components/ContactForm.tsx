@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { sendEmail } from "@/utils/send-email";
 import { toast } from "sonner";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export const formDataSchema = z.object({
   name: z.string().min(5).max(150),
@@ -18,6 +19,7 @@ export const formDataSchema = z.object({
 export type FormData = z.infer<typeof formDataSchema>;
 
 const ContactForm = () => {
+  const t = useTranslations("Contact");
   const { register, handleSubmit, formState, reset } = useForm<FormData>({
     resolver: zodResolver(formDataSchema),
     defaultValues: {
@@ -31,20 +33,17 @@ const ContactForm = () => {
     try {
       await sendEmail(data);
       reset();
-      toast.success(
-        "Thank you! Your message has been successfully sent. I will contact you very soon!"
-      );
+      toast.success(t("SendSuccess"));
     } catch (error) {
       console.log("error", error);
-      toast.error(
-        "Sorry, something went wrong while sending your message. Please contact me directly at abdkode.p@gmail.com"
-      );
+      toast.error(t("SendError"));
     }
   };
   return (
     <div id="contact" className="py-20 relative z-10">
       <h1 className="heading">
-        Contact <span className="text-purpleDark dark:text-purple">Me</span>
+        {t("Contact")}{" "}
+        <span className="text-purpleDark dark:text-purple">{t("Me")}</span>
       </h1>
       <div className="flex mt-12 w-full mx-auto rounded-2xl p-4 md:p-8 shadow-input bg-neutral-200/[0.8] dark:bg-slate-900/[0.8] ">
         <div className="flex-1 justify-center items-center hidden xl:flex">
@@ -58,13 +57,12 @@ const ContactForm = () => {
         </div>
         <div className="flex-1">
           <p className="text-neutral-600 text-md font-bold mt-2 dark:text-neutral-300 text-center xl:text-start">
-            Looking for a talented developer? Let&apos;s connect and make great
-            things happen.
+            {t("LookingForATalentedDeveloper")}
           </p>
 
           <form className="my-8" onSubmit={handleSubmit(onSubmit)}>
             <LabelInputContainer className="mb-4">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">{t("Name")}</Label>
               <Input
                 id="name"
                 placeholder="John Doe"
@@ -78,7 +76,7 @@ const ContactForm = () => {
               )}
             </LabelInputContainer>
             <LabelInputContainer className="mb-4">
-              <Label htmlFor="email">Email Address</Label>
+              <Label htmlFor="email">{t("EmailAddress")}</Label>
               <Input
                 id="email"
                 placeholder="johndoe@example.com"
@@ -92,12 +90,12 @@ const ContactForm = () => {
               )}
             </LabelInputContainer>
             <LabelInputContainer className="mb-4">
-              <Label htmlFor="message">Message</Label>
+              <Label htmlFor="message">{t("Message")}</Label>
               <Input
                 id="message"
                 type="text"
                 multiline
-                placeholder="Enter your message"
+                placeholder={t("EnterMessage")}
                 {...register("message", { required: true })}
               />
               {formState.errors.message && (
@@ -108,19 +106,18 @@ const ContactForm = () => {
             </LabelInputContainer>
 
             <button
+              name="submit"
               disabled={formState.isSubmitting}
               className="bg-gradient-to-br relative group/btn bg-purpleDark disabled:bg-purpleDark/60 block w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
               type="submit"
             >
-              {formState.isSubmitting
-                ? "Sending Message... "
-                : "Send Message →"}
+              {formState.isSubmitting ? t("SendingMessage") : t("SendMessage")}
               <BottomGradient />
             </button>
           </form>
           <div className="mt-4">
             <p className="text-neutral-600 text-md font-normal mt-2 dark:text-neutral-300 text-center xl:text-start">
-              Or reach out directly by emailing me at{" "}
+              {t("OrReachOutDirectly")}{" "}
               <span className="text-purpleDark dark:text-purple">
                 abdkode.p@gmail.com
               </span>
