@@ -6,6 +6,7 @@ import { useOutsideClick } from "@/hooks/use-outside-click";
 import { FaLocationArrow } from "react-icons/fa";
 import StackIcon from "tech-stack-icons";
 import { useVisibleNav } from "@/context/NavProvider";
+import { useTranslations } from "next-intl";
 
 type FilterKeysByPrefix<T, Prefix extends string> = {
   [K in keyof T as K extends `${infer _Prefix}${Prefix}` ? K : never]: T[K];
@@ -35,6 +36,7 @@ interface Props {
 }
 
 const ExpandableCard = ({ renderProject, projects }: Props) => {
+  const t = useTranslations("Projects");
   const { setVisibleNav } = useVisibleNav();
   const [active, setActive] = useState<IProject | boolean | null>(null);
   const id = useId();
@@ -134,7 +136,7 @@ const ExpandableCard = ({ renderProject, projects }: Props) => {
                     layoutId={`title-${active.title}-${id}`}
                     className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-neutral-600 dark:text-white"
                   >
-                    {active.title}
+                    {t(active.title)}
                   </motion.h3>
                 </div>
 
@@ -146,7 +148,7 @@ const ExpandableCard = ({ renderProject, projects }: Props) => {
                     exit={{ opacity: 0 }}
                     className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
                   >
-                    {active.des}
+                    {t(active.des)}
                   </motion.div>
                 </div>
                 <div className="flex justify-between items-center mt-2">
@@ -173,7 +175,7 @@ const ExpandableCard = ({ renderProject, projects }: Props) => {
                       target="_blank"
                       className="px-4 py-2 rounded-xl border border-purpleDark dark:border-purple text-purpleDark dark:text-purple text-xs font-bold flex items-center gap-2"
                     >
-                      <span className="max-sm:hidden">Checkout</span>{" "}
+                      <span className="max-sm:hidden">{t("Checkout")}</span>{" "}
                       <FaLocationArrow />
                     </motion.a>
                   )}
