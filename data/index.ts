@@ -98,7 +98,7 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Dev Forum (In Developing)",
+    title: "Dev Forum",
     des: "Creating a developer forum focused on Q&A, enabling users to ask questions, share knowledge, and solve problems collaboratively within the tech community.",
     img: "/dev-forum.png",
     isMobile: false,
