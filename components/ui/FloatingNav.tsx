@@ -69,14 +69,14 @@ export const FloatingNav = ({
     updateMode(theme);
   }, [theme]);
 
-  const handleChangeLanguage = useCallback(
-    (newLocale: string) => {
-      router.push(pathname, { locale: newLocale });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [pathname]
-  );
+  // const handleChangeLanguage = useCallback(
+  //   (newLocale: string) => {
+  //     router.push(pathname, { locale: newLocale });
+  //     // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   },
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   [pathname]
+  // );
 
   useEffect(() => {
     if (window.scrollY < 0.5) {

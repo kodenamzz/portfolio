@@ -1,5 +1,4 @@
-import { IExperiences } from "@/components/Experience";
-import { IProject } from "@/components/ui/ExpandableCard";
+import { IExperiences, IProject } from "@/types";
 
 export const projects: IProject[] = [
   {

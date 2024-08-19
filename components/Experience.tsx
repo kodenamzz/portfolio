@@ -4,37 +4,6 @@ import { MovingButton } from "./ui/MovingBorders";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-type FilterKeysByPrefix<T, Prefix extends string> = {
-  [K in keyof T as K extends `${infer _Prefix}${Prefix}` ? K : never]: T[K];
-};
-
-type ExperiencesTitle = keyof FilterKeysByPrefix<
-  IntlMessages["Experiences"],
-  "-Title"
->;
-type ExperiencesPlace = keyof FilterKeysByPrefix<
-  IntlMessages["Experiences"],
-  "-Place"
->;
-type ExperiencesPeriod = keyof FilterKeysByPrefix<
-  IntlMessages["Experiences"],
-  "-Period"
->;
-type ExperiencesDesc = keyof FilterKeysByPrefix<
-  IntlMessages["Experiences"],
-  "-Desc"
->;
-
-export interface IExperiences {
-  id: number;
-  title: ExperiencesTitle;
-  place: ExperiencesPlace;
-  period: ExperiencesPeriod;
-  desc: ExperiencesDesc[];
-  className: string;
-  thumbnail: string;
-}
-
 const Experience = () => {
   const t = useTranslations("Experiences");
   return (

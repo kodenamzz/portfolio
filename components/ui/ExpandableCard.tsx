@@ -7,28 +7,7 @@ import { FaLocationArrow } from "react-icons/fa";
 import StackIcon from "tech-stack-icons";
 import { useVisibleNav } from "@/context/NavProvider";
 import { useTranslations } from "next-intl";
-
-type FilterKeysByPrefix<T, Prefix extends string> = {
-  [K in keyof T as K extends `${infer _Prefix}${Prefix}` ? K : never]: T[K];
-};
-
-// Filter keys ending with '-Title'
-type ProjectTitle = keyof FilterKeysByPrefix<
-  IntlMessages["Projects"],
-  "-Title"
->;
-// Filter keys ending with '-Desc'
-type ProjectDesc = keyof FilterKeysByPrefix<IntlMessages["Projects"], "-Desc">;
-
-export interface IProject {
-  id: number;
-  title: ProjectTitle;
-  des: ProjectDesc;
-  img: string;
-  iconLists: string[];
-  link: string;
-  isMobile: boolean;
-}
+import { IProject } from "@/types";
 
 interface Props {
   renderProject: (project: IProject) => React.JSX.Element;
