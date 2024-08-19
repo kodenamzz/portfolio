@@ -8,14 +8,16 @@ import Link from "next/link";
 import { FaLocationArrow } from "react-icons/fa";
 import StackIcon from "tech-stack-icons";
 import ExpandableCard from "./ui/ExpandableCard";
+import { useTranslations } from "next-intl";
 
 const RecentProjects = () => {
+  const t = useTranslations("Projects");
   return (
     <div id="projects" className="py-20">
       <h1 className="heading">
-        A some selection of{" "}
+        {t("ASomeSelectionOf") + " "}
         <span className="text-purpleDark dark:text-purple">
-          recent projects
+          {t("RecentProjects")}
         </span>
       </h1>
       <div className="flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-16 mt-20">
@@ -58,7 +60,7 @@ const RecentProjects = () => {
                     translateZ="50"
                     className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-neutral-600 dark:text-white"
                   >
-                    {project.title}
+                    {t(project.title)}
                   </CardItem>
                   <CardItem
                     as="p"
@@ -92,7 +94,7 @@ const RecentProjects = () => {
                         target="__blank"
                         className="px-4 py-2 rounded-xl border border-purpleDark dark:border-purple text-purpleDark dark:text-purple text-xs font-bold flex items-center gap-2"
                       >
-                        <span className="max-sm:hidden">Checkout</span>{" "}
+                        <span className="max-sm:hidden">{t("Checkout")}</span>{" "}
                         <FaLocationArrow />
                       </CardItem>
                     )}

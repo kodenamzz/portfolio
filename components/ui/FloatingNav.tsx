@@ -13,8 +13,18 @@ import { RiMoonFill, RiSunFill } from "react-icons/ri";
 import { useVisibleNav } from "@/context/NavProvider";
 
 import { MdHome, MdPerson, MdWork, MdEmail, MdCode } from "react-icons/md";
+import { useTranslations } from "next-intl";
+import { GB, TH } from "country-flag-icons/react/3x2";
 
-export const navItems = [
+import { usePathname, useRouter } from "@/navigation";
+
+type NavItem = {
+  name: "Home" | "About" | "Projects" | "Experiences" | "Contact";
+  link: string;
+  icon: JSX.Element;
+};
+
+export const navItems: NavItem[] = [
   { name: "Home", link: "#home", icon: <MdHome /> },
   { name: "About", link: "#about", icon: <MdPerson /> },
   { name: "Projects", link: "#projects", icon: <MdCode /> },
@@ -22,12 +32,25 @@ export const navItems = [
   { name: "Contact", link: "#contact", icon: <MdEmail /> },
 ];
 
-export const FloatingNav = ({ className }: { className?: string }) => {
+export const FloatingNav = ({
+  className,
+  locale,
+}: {
+  className?: string;
+  locale: string;
+}) => {
+  const t = useTranslations("NavItems");
+
+  const router = useRouter();
+  const pathname = usePathname();
+
   const { scrollYProgress } = useScroll();
 
   const { visibleNav, setVisibleNav } = useVisibleNav();
   const { setTheme, theme } = useTheme();
   const [mode, updateMode] = useState<string | undefined>("");
+
+  console.log("locale", locale);
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     // Check if current is not undefined and is a number
@@ -45,6 +68,15 @@ export const FloatingNav = ({ className }: { className?: string }) => {
   const rerender = useCallback(() => {
     updateMode(theme);
   }, [theme]);
+
+  const handleChangeLanguage = useCallback(
+    (newLocale: string) => {
+      router.push(pathname, { locale: newLocale });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [pathname]
+  );
 
   useEffect(() => {
     if (window.scrollY < 0.5) {
@@ -75,7 +107,7 @@ export const FloatingNav = ({ className }: { className?: string }) => {
           className
         )}
       >
-        {navItems.map((navItem: any, idx: number) => (
+        {navItems.map((navItem, idx: number) => (
           <Link
             key={`link=${idx}`}
             href={navItem.link}
@@ -84,14 +116,28 @@ export const FloatingNav = ({ className }: { className?: string }) => {
             )}
           >
             <span className="block">{navItem.icon}</span>
-            <span className="block text-sm  max-sm:hidden">{navItem.name}</span>
+            <span className="block text-sm  max-sm:hidden">
+              {t(navItem.name)}
+            </span>
           </Link>
         ))}
         <button
+          name="theme"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
         >
           <span>{mode === "dark" ? <RiSunFill /> : <RiMoonFill />}</span>
+          <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
+        </button>
+        <button
+          name="Language"
+          title="Change Language"
+          onClick={() => handleChangeLanguage(locale === "en" ? "th" : "en")}
+          className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
+        >
+          <span>
+            {locale === "en" ? <TH className="w-6" /> : <GB className="w-6" />}
+          </span>
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
         </button>
       </motion.div>

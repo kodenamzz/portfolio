@@ -1,0 +1,97 @@
+{
+    "NavItems": {
+        "Home": "Home",
+        "About": "About",
+        "Projects": "Projects",
+        "Experiences": "Experiences",
+        "Contact": "Contact"
+    },
+    "Home": {
+        "topTitle": "Dynamic Web Magic with Next.js",
+        "primaryWords": "Bringing Visions to Life with",
+        "SmoothUserExperiences": "Smooth User Experiences",
+        "SeamlessInteractions": "Seamless Interactions",
+        "IntuitiveInterfaces": "Intuitive Interfaces",
+        "FluidDesigns": "Fluid Designs",
+        "GreetingFromMe": "Hi, I'm Abdulkode, a Full-Stack Developer based in Thailand.",
+        "ShowMyWork": "Show my work"
+    },
+    "DarkModeSwitch": {
+        "PowerOfDarkMode": "Unleash the Power of Dark Mode!",
+        "LightMode": "Light Mode",
+        "DarkMode": "Dark Mode"
+    },
+    "About": {
+        "About": "About",
+        "Me": "Me",
+        "GreetingWithName": "Hey, I'm Abdulkode Pohlor",
+        "MessageAboutMe": "I am a passionate Full-stack Developer with about 5 years of experience, specializing in web development and adept at building innovative and user-friendly applications. Proficient in React.js, Next.js, JavaScript, TypeScript, CSS, Material UI, and Tailwind CSS, I also have substantial backend experience with Node.js and PHP Laravel. Constantly eager to learn and adapt to new technologies, I aim to leverage my skills to contribute to dynamic projects and deliver high-quality solutions that exceed client expectations.",
+        "CollegiateEducation": "Collegiate Education",
+        "University": "Prince of Songkla University, Thailand",
+        "Degree": "Bachelor of Business Administration in Information and Computer Management",
+        "GPA": "GPA : 3.32/4.00 (Second Class Honors)",
+        "UniversityPeriod": "Aug 2015 - May 2019",
+        "ReachOutDirectly": "Reach out directly by emailing me",
+        "CopyEmail": "Copy my email",
+        "EmailCopied": "Email copied"
+    },
+    "TechStacks": {
+        "Skills": "Skills"
+    },
+    "Projects": {
+        "ASomeSelectionOf": "A some selection of",
+        "RecentProjects": "recent projects",
+        "OnlineSurveyPlatform-Title": "Online Survey Platform",
+        "OnlineSurveyPlatform-Desc": "Led the development of a comprehensive online survey platform with diverse question types, dynamic logic triggers, and visual result displays, enhancing user experience and data analysis for improved decision-making.",
+        "SurveyBackOfficeMonitoringSystem-Title": "Survey Back-Office Monitoring System",
+        "SurveyBackOfficeMonitoringSystem-Desc": "Developed a robust back-office monitoring system for surveys, covering user activity tracking, package order management, and survey statistics, enhancing administrative oversight and efficient platform management.",
+        "DevForum-Title": "Dev Forum (In Developing)",
+        "DevForum-Desc": "Creating a developer forum focused on Q&A, enabling users to ask questions, share knowledge, and solve problems collaboratively within the tech community.",
+        "OrderFoodOnlineApplication-Title": "Order Food Online Application",
+        "OrderFoodOnlineApplication-Desc": "Developed a mobile application for ordering food online using Flutter, allowing users to place orders conveniently from anywhere with a seamless and intuitive interface.",
+        "Checkout": "Checkout"
+    },
+    "Experiences": {
+        "My": "My",
+        "WorkExperiences": "work experiences",
+        "EBM-FullStackDeveloper-Title": "Full-stack Developer",
+        "EBM-FullStackDeveloper-Place": "Excellent Digital Development Co.,Ltd, Bangkok",
+        "EBM-FullStackDeveloper-Period": "Oct 2019 - Apr 2024",
+        "EBM-FullStackDeveloper-1-Desc": "As a Full Stack Web Developer, I specialize in both front-end and back-end technologies, including React.js, Next.js, Redux, Material-UI, HTML, CSS, JavaScript, TypeScript, Laravel, Node.js, and MongoDB. I design and implement software solutions, optimize code, and manage servers, databases, and APIs, focusing on building responsive, high-performance applications while ensuring security and scalability.",
+        "EBM-FullStackDeveloper-2-Desc": "In my recent role, I led the development of enablesurvey.com, an online survey platform featuring over 20 question types, dynamic survey flows, and visual result displays, which enhanced user experience and data analysis. I also developed a comprehensive back-office monitoring system for managing surveys, tracking user activity, handling order management, and monitoring statistics. Additionally, I created a mobile food ordering app using Flutter, providing users with a seamless and user-friendly ordering experience.",
+        "MDS-Programmer-Title": "Programmer (Internship)",
+        "MDS-Programmer-Place": "M.D.Soft Co.,Ltd. Bangkok",
+        "MDS-Programmer-Period": "Jan 2019 - Apr 2019",
+        "MDS-Programmer-1-Desc": "As a Programmer Assistant, I provided valuable support in software development projects, working closely with programmers to effectively implement solutions and achieve project goals. I took a hands-on approach in designing and developing engaging web pages using HTML, CSS, JavaScript, and company-specific tools, ensuring adherence to best practices in web development with a focus on user experience and functionality to meet project requirements and enhance overall usability.",
+        "YICMG-Title": "Experience at YICMG",
+        "YICMG-Place": "Shanghai, China",
+        "YICMG-Period": "July 2018,  July 2019",
+        "YICMG-1-Desc": "Participated in the Youth Innovation Competition on Lancang-Mekong Region’s Governance and Development (YICMG) and was awarded the first prize for my Travel Guide Application project. This app helps tourists by providing destination information, activity suggestions, and recommendations for next destinations. The experience included teamwork, field research, and innovation instruction.",
+        "PSU-TA-Title": "Teaching Assistant and Instructor",
+        "PSU-TA-Place": "Prince of Songkla University, Trang",
+        "PSU-TA-Period": "Aug 2018 - Dec 2018",
+        "PSU-TA-1-Desc": "I assisted teachers in training students on web development, design, and techniques, as well as conducted classes to teach these subjects. Additionally, I reviewed and graded students' quizzes and assignments and performed various other tasks as assigned."
+    },
+    "Contact": {
+        "Contact": "Contact",
+        "Me": "Me",
+        "LookingForATalentedDeveloper": "Looking for a talented developer? Let&apos;s connect and make great things happen.",
+        "Name": "Name",
+        "EmailAddress": "Email Address",
+        "Message": "Message",
+        "EnterMessage": "Enter your message",
+        "SendingMessage": "Sending Message...",
+        "SendMessage": "Send Message  →",
+        "OrReachOutDirectly": "Or reach out directly by emailing me at",
+        "SendSuccess": "Thank you! Your message has been successfully sent. I will contact you very soon!",
+        "SendError": "Sorry, something went wrong while sending your message. Please contact me directly at abdkode.p@gmail.com"
+    },
+    "Footer": {
+        "Heading1": "Looking to elevate",
+        "Heading2": "your digital presence?",
+        "ContactMeMessage": "Contact me today to explore how I can help you reach your objectives and make an impact.",
+        "LetsGetInTouch": "Let's get in touch",
+        "Copyright": "Copyright ©",
+        "CopyrightName": "Abdulkode Pohlor"
+    }
+}

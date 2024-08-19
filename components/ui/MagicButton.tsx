@@ -18,6 +18,7 @@ export const MagicButton = ({
 }) => {
   return (
     <button
+      name="MagicButton"
       className={cn(
         "relative inline-flex justify-center items-center h-12 w-full overflow-hidden rounded-lg p-[1px] focus:outline-none md:w-60 md:mt-10",
         containerClasses

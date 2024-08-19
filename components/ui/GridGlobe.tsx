@@ -2,18 +2,13 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
+import { GlobeConfig } from "./Globe";
 
 const World = dynamic(() => import("./Globe").then((m) => m.World), {
   ssr: false,
 });
 
-interface Props {
-  heading?: React.ReactNode;
-  subHeading?: React.ReactNode;
-  children?: React.ReactNode;
-}
-
-export function GridGlobe({ heading, subHeading, children }: Props) {
+export function GridGlobe() {
   const { theme } = useTheme();
 
   const [hideGlobe, setHideGlobe] = useState(false);
@@ -29,7 +24,7 @@ export function GridGlobe({ heading, subHeading, children }: Props) {
     };
   }, [theme]);
 
-  const globeConfig = {
+  const globeConfig: GlobeConfig = {
     pointSize: 4,
     globeColor: theme === "dark" ? "#062056" : "#668fff",
     showAtmosphere: true,
