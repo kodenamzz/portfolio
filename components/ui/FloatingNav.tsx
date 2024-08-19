@@ -129,7 +129,7 @@ export const FloatingNav = ({
           <span>{mode === "dark" ? <RiSunFill /> : <RiMoonFill />}</span>
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
         </button>
-        <button
+        {/* <button
           name="Language"
           title="Change Language"
           onClick={() => handleChangeLanguage(locale === "en" ? "th" : "en")}
@@ -139,7 +139,7 @@ export const FloatingNav = ({
             {locale === "en" ? <TH className="w-6" /> : <GB className="w-6" />}
           </span>
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
-        </button>
+        </button> */}
       </motion.div>
     </AnimatePresence>
   );
