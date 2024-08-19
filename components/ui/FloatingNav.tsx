@@ -123,6 +123,7 @@ export const FloatingNav = ({
         ))}
         <button
           name="theme"
+          aria-label="theme"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
         >
