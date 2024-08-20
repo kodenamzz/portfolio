@@ -50,8 +50,6 @@ export const FloatingNav = ({
   const { setTheme, theme } = useTheme();
   const [mode, updateMode] = useState<string | undefined>("");
 
-  console.log("locale", locale);
-
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     // Check if current is not undefined and is a number
     if (typeof current === "number") {
