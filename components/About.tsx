@@ -80,7 +80,7 @@ const About = () => {
                 <BackgroundGradientAnimation></BackgroundGradientAnimation>
                 <div className="mt-5 relative">
                   <div className="hover:translate-x-2 transition duration-200 flex flex-col items-center">
-                    <div className="flex items-center md:gap-3 gap-6">
+                    <div className="flex items-center md:gap-3 gap-6 z-50">
                       <div className="rounded-lg w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-150">
                         <Link
                           href="https://github.com/kodenamzz"
