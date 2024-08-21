@@ -7,14 +7,14 @@
         "Contact": "ติดต่อ"
     },
     "Home": {
-        "topTitle": "เวทมนตร์เว็บไดนามิกกับ Next.js",
+        "topTitle": "Dynamic Web Magic ด้วย Next.js",
         "primaryWords": "นำวิสัยทัศน์สู่ความเป็นจริงด้วย",
         "SmoothUserExperiences": "ประสบการณ์ผู้ใช้ที่ไม่สะดุด",
         "SeamlessInteractions": "การโต้ตอบที่ราบรื่น",
         "IntuitiveInterfaces": "การแสดงผลที่เข้าใจง่าย",
         "FluidDesigns": "การออกแบบที่ลื่นไหล",
-        "GreetingFromMe": "สวัสดี, ผมคือ อับดุลกอเดร์  Full-stack developer",
-        "ShowMyWork": "ดูผลงานของผม"
+        "GreetingFromMe": "สวัสดีครับ, ผม อับดุลกอเดร์  Full-stack developer",
+        "ShowMyWork": "ดูผลงาน"
     },
     "DarkModeSwitch": {
         "PowerOfDarkMode": "ปลดปล่อยพลังแห่งความมืด!",
@@ -53,7 +53,7 @@
     },
     "Experiences": {
         "My": "ประสบการณ์",
-        "WorkExperiences": "การทำงานของผม",
+        "WorkExperiences": "การทำงาน",
         "EBM-FullStackDeveloper-Title": " Full-stack developer ",
         "EBM-FullStackDeveloper-Place": "บริษัท Excellent Business Management จำกัด, กรุงเทพมหานคร",
         "EBM-FullStackDeveloper-Period": "ต.ค. 2562 - เม.ย. 2567",
@@ -75,7 +75,7 @@
     "Contact": {
         "Contact": "ติดต่อ",
         "Me": "ผม",
-        "LookingForATalentedDeveloper": "กำลังมองหานักพัฒนาที่มีความสามารถใช่ไหม? ติดต่อมาและสร้างสรรค์สิ่งที่ยอดเยี่ยมกัน",
+        "LookingForATalentedDeveloper": "กำลังมองหานักพัฒนาที่มีความสามารถใช่ไหม? ติดต่อมาและสร้างสรรค์สิ่งที่ยอดเยี่ยมกันครับ",
         "Name": "ชื่อ",
         "EmailAddress": "ที่อยู่อีเมล",
         "Message": "ข้อความ",

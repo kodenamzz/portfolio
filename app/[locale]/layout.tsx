@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_Thai } from "next/font/google";
 import "../globals.css";
 import { ThemeProvider } from "../../context/provider";
 import { Toaster } from "@/components/ui/Sonner";
@@ -7,7 +7,7 @@ import { NavProvider } from "@/context/NavProvider";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSanThai = Noto_Sans_Thai({ subsets: ["latin", "thai"] });
 
 export const metadata: Metadata = {
   title: "Abdulkode portfolio",
@@ -26,7 +26,7 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={notoSanThai.className}>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
