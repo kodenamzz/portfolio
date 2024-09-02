@@ -67,14 +67,14 @@ export const FloatingNav = ({
     updateMode(theme);
   }, [theme]);
 
-  // const handleChangeLanguage = useCallback(
-  //   (newLocale: string) => {
-  //     router.push(pathname, { locale: newLocale });
-  //     // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   },
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   [pathname]
-  // );
+  const handleChangeLanguage = useCallback(
+    (newLocale: string) => {
+      router.push(pathname, { locale: newLocale });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [pathname]
+  );
 
   useEffect(() => {
     if (window.scrollY < 0.5) {
@@ -128,7 +128,7 @@ export const FloatingNav = ({
           <span>{mode === "dark" ? <RiSunFill /> : <RiMoonFill />}</span>
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
         </button>
-        {/* <button
+        <button
           name="Language"
           title="Change Language"
           onClick={() => handleChangeLanguage(locale === "en" ? "th" : "en")}
@@ -138,7 +138,7 @@ export const FloatingNav = ({
             {locale === "en" ? <TH className="w-6" /> : <GB className="w-6" />}
           </span>
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
-        </button> */}
+        </button>
       </motion.div>
     </AnimatePresence>
   );
