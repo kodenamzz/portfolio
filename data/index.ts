@@ -206,6 +206,7 @@ export const workExperience: IExperiences[] = [
     desc: ["YICMG-1-Desc"],
     className: "md:col-span-2",
     thumbnail: "/yicmg.png",
+    link: "https://news.gimyong.com/article/8539",
   },
   {
     id: 4,

@@ -37,6 +37,7 @@ export interface IExperiences {
   desc: ExperiencesDesc[];
   className: string;
   thumbnail: string;
+  link?: string;
 }
 
 type ProjectTitle = keyof FilterKeysByPrefix<
