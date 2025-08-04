@@ -181,6 +181,15 @@ export const companies = [
 export const workExperience: IExperiences[] = [
   {
     id: 1,
+    title: "TCB-DotNetDeveloper-Title",
+    place: "TCB-DotNetDeveloper-Place",
+    period: "TCB-DotNetDeveloper-Period",
+    desc: ["TCB-DotNetDeveloper-1-Desc"],
+    className: "md:col-span-2",
+    thumbnail: "/tcrbank.png",
+  },
+  {
+    id: 2,
     title: "EBM-FullStackDeveloper-Title",
     place: "EBM-FullStackDeveloper-Place",
     period: "EBM-FullStackDeveloper-Period",
@@ -190,7 +199,7 @@ export const workExperience: IExperiences[] = [
     thumbnail: "/exp1.svg",
   },
   {
-    id: 2,
+    id: 3,
     title: "MDS-Programmer-Title",
     place: "MDS-Programmer-Place",
     period: "MDS-Programmer-Period",
@@ -199,7 +208,7 @@ export const workExperience: IExperiences[] = [
     thumbnail: "/exp2.svg",
   },
   {
-    id: 3,
+    id: 4,
     title: "YICMG-Title",
     place: "YICMG-Place",
     period: "YICMG-Period",
@@ -209,7 +218,7 @@ export const workExperience: IExperiences[] = [
     link: "https://news.gimyong.com/article/8539",
   },
   {
-    id: 4,
+    id: 5,
     title: "PSU-TA-Title",
     place: "PSU-TA-Place",
     period: "PSU-TA-Period",
