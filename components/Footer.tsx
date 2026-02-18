@@ -29,11 +29,16 @@ const Footer = () => {
       </div>
 
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center gap-4 relative z-[9999]">
-        <p className="md:text-base text-sm md:font-normal font-light">
-          {t("Copyright") + " "}
-          {new Date().getFullYear()}
-          {" " + t("CopyrightName")}
-        </p>
+        <div className="flex flex-col items-center md:items-start gap-1">
+          <p className="md:text-base text-sm md:font-normal font-light">
+            {t("Copyright") + " "}
+            {new Date().getFullYear()}
+            {" " + t("CopyrightName")}
+          </p>
+          <p className="text-xs text-neutral-400 dark:text-neutral-600">
+            v{process.env.NEXT_PUBLIC_APP_VERSION}
+          </p>
+        </div>
 
         <div className="flex items-center md:gap-3 gap-6">
           <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-150 bg-opacity-75 bg-neutral-200 dark:bg-black-200 rounded-lg border border-black-300">
