@@ -32,18 +32,16 @@ export function MovingButton({
   href?: string;
   [key: string]: unknown;
 }) {
-  const Component = href != null ? Link : (as ?? "div");
-  return (
-    <Component
-      {...(href != null ? { href, ...otherProps } : otherProps)}
-      className={cn(
-        "bg-transparent relative text-xl p-[1px] overflow-hidden md:col-span-2",
-        containerClassName
-      )}
-      style={{
-        borderRadius: borderRadius,
-      }}
-    >
+  const sharedProps = {
+    className: cn(
+      "bg-transparent relative text-xl p-[1px] overflow-hidden md:col-span-2",
+      containerClassName
+    ),
+    style: { borderRadius } as React.CSSProperties,
+  };
+
+  const inner = (
+    <>
       <div
         className="absolute inset-0"
         style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
@@ -69,7 +67,22 @@ export function MovingButton({
       >
         {children}
       </div>
-    </Component>
+    </>
+  );
+
+  if (href != null) {
+    return (
+      <Link href={href} {...otherProps} {...sharedProps}>
+        {inner}
+      </Link>
+    );
+  }
+
+  const Component = as ?? "div";
+  return React.createElement(
+    Component,
+    { ...otherProps, ...sharedProps },
+    inner
   );
 }
 

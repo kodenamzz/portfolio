@@ -8,7 +8,7 @@ export const projects: IProject[] = [
     img: "/eanblesv.png",
     isMobile: false,
     iconLists: [
-      "reactjs",
+      "react",
       "materialui",
       "redux",
       "laravel",
@@ -25,7 +25,7 @@ export const projects: IProject[] = [
     img: "/backoffic-dev.png",
     isMobile: false,
     iconLists: [
-      "reactjs",
+      "react",
       "materialui",
       "laravel",
       "mongodb",
@@ -41,8 +41,8 @@ export const projects: IProject[] = [
     img: "/dev-forum.png",
     isMobile: false,
     iconLists: [
-      "reactjs",
-      "nextjs2",
+      "react",
+      "nextjs",
       "tailwindcss",
       "nodejs",
       "nestjs",
@@ -64,11 +64,11 @@ export const projects: IProject[] = [
 
 export const techStacks = [
   {
-    name: "reactjs",
+    name: "react",
     label: "React",
   },
   {
-    name: "nextjs2",
+    name: "nextjs",
     label: "Next js",
   },
   {

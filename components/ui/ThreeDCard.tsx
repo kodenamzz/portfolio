@@ -119,8 +119,6 @@ export const CardItem = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isMouseEntered] = useMouseEnter();
-  const Tag = href != null ? Link : (as ?? "div");
-
   const handleAnimations = React.useCallback(() => {
     if (!ref.current) return;
     if (isMouseEntered) {
@@ -142,15 +140,21 @@ export const CardItem = ({
     handleAnimations();
   }, [handleAnimations]);
 
-  return (
-    <Tag
-      ref={ref as React.Ref<HTMLAnchorElement>}
-      {...(href != null ? { href, ...rest } : rest)}
-      className={cn("w-fit transition duration-200 ease-linear", className)}
-    >
-      {children}
-    </Tag>
-  );
+  const shared = {
+    ref: ref as React.Ref<HTMLAnchorElement>,
+    className: cn("w-fit transition duration-200 ease-linear", className),
+  };
+
+  if (href != null) {
+    return (
+      <Link href={href} {...rest} {...shared}>
+        {children}
+      </Link>
+    );
+  }
+
+  const Tag = as ?? "div";
+  return React.createElement(Tag, { ...rest, ...shared }, children);
 };
 
 // Create a hook to use the context
