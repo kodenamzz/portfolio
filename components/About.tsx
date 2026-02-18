@@ -8,6 +8,17 @@ import { useTranslations } from "next-intl";
 
 const About = () => {
   const t = useTranslations("About");
+  const startDate = new Date("2019-10-01");
+  const currentDate = new Date();
+
+  // Calculate the difference in years and months
+  let years = currentDate.getFullYear() - startDate.getFullYear();
+  const monthDiff = currentDate.getMonth() - startDate.getMonth();
+
+  // Adjust years if the current month is before the start month
+  if (monthDiff > 0) {
+    years += 1; // Round up if there are additional months
+  }
   return (
     <div id="about" className="relative my-16">
       {/* <motion.div
@@ -41,7 +52,7 @@ const About = () => {
       <div className="flex relative z-50 justify-center flex-col items-center w-full mt-6 md:mt-80">
         <div className="flex flex-col items-center">
           <p className="text-sm indent-9 lg:font-normal lg:text-xl font-semibold mt-2 dark:text-neutral-300 text-neutral-900 w-[90vw] md:w-[70vw]">
-            {t("MessageAboutMe")}
+            {t("MessageAboutMe", { years })}
           </p>
 
           <div className="flex flex-col md:flex-row gap-6 w-full mt-6">

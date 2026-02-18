@@ -1,0 +1,51 @@
+
+> portfolio@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.31
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 1796ms
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 1176ms (123 modules)
+ ○ Compiling /[locale] ...
+ ✓ Compiled /[locale] in 37.2s (3338 modules)
+ ✓ Compiled in 2.7s (1607 modules)
+ ⨯ ReferenceError: document is not defined
+    at __webpack_require__ (/app/.next/server/webpack-runtime.js:33:43)
+    at __webpack_require__ (/app/.next/server/webpack-runtime.js:33:43)
+    at eval (./components/ui/CopyMyEmail.tsx:11:70)
+    at (ssr)/./components/ui/CopyMyEmail.tsx (/app/.next/server/app/[locale]/page.js:234:1)
+    at Object.__webpack_require__ [as require] (/app/.next/server/webpack-runtime.js:33:43)
+digest: "3596763525"
+ ⨯ ReferenceError: document is not defined
+    at __webpack_require__ (/app/.next/server/webpack-runtime.js:33:43)
+    at __webpack_require__ (/app/.next/server/webpack-runtime.js:33:43)
+    at eval (./components/ui/CopyMyEmail.tsx:11:70)
+    at (ssr)/./components/ui/CopyMyEmail.tsx (/app/.next/server/app/[locale]/page.js:234:1)
+    at Object.__webpack_require__ [as require] (/app/.next/server/webpack-runtime.js:33:43)
+digest: "3596763525"
+ HEAD / 500 in 186ms
+ ✓ Compiled in 1329ms (1607 modules)
+ ○ Compiling /[locale] ...
+ ✓ Compiled /[locale] in 905ms (1722 modules)
+ ⨯ ReferenceError: document is not defined
+    at __webpack_require__ (/app/.next/server/webpack-runtime.js:33:43)
+    at __webpack_require__ (/app/.next/server/webpack-runtime.js:33:43)
+    at eval (./components/ui/CopyMyEmail.tsx:11:70)
+    at (ssr)/./components/ui/CopyMyEmail.tsx (/app/.next/server/app/[locale]/page.js:234:1)
+    at Object.__webpack_require__ [as require] (/app/.next/server/webpack-runtime.js:33:43)
+digest: "3596763525"
+ HEAD / 500 in 1768ms
+ ✓ Compiled in 1236ms (1607 modules)
+ ○ Compiling /[locale] ...
+ ✓ Compiled /[locale] in 868ms (1722 modules)
+ ⨯ ReferenceError: document is not defined
+    at __webpack_require__ (/app/.next/server/webpack-runtime.js:33:43)
+    at __webpack_require__ (/app/.next/server/webpack-runtime.js:33:43)
+    at eval (./components/ui/CopyMyEmail.tsx:11:70)
+    at (ssr)/./components/ui/CopyMyEmail.tsx (/app/.next/server/app/[locale]/page.js:234:1)
+    at Object.__webpack_require__ [as require] (/app/.next/server/webpack-runtime.js:33:43)
+digest: "3596763525"
+ HEAD / 500 in 1749ms
