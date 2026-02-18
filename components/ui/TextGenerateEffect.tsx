@@ -33,7 +33,7 @@ export const TextGenerateEffect = ({
   );
   const updatedThisRound = useMotionValue(true);
 
-  let wordsArray = primaryWords.split(" ");
+  const wordsArray = primaryWords.split(" ");
 
   useEffect(() => {
     animate(
@@ -46,7 +46,7 @@ export const TextGenerateEffect = ({
         delay: stagger(0.2),
       }
     );
-  }, [scope.current]);
+  }, [animate]);
 
   useEffect(() => {
     animate(count, 60, {

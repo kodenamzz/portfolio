@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import {
   motion,
   useAnimationFrame,
@@ -13,24 +14,28 @@ import { cn } from "@/utils/cn";
 export function MovingButton({
   borderRadius = "1.75rem",
   children,
-  as: Component = "button",
+  as,
   containerClassName,
   borderClassName,
   duration,
   className,
+  href,
   ...otherProps
 }: {
   borderRadius?: string;
   children: React.ReactNode;
-  as?: any;
+  as?: React.ElementType;
   containerClassName?: string;
   borderClassName?: string;
   duration?: number;
   className?: string;
-  [key: string]: any;
+  href?: string;
+  [key: string]: unknown;
 }) {
+  const Component = href != null ? Link : (as ?? "div");
   return (
     <Component
+      {...(href != null ? { href, ...otherProps } : otherProps)}
       className={cn(
         "bg-transparent relative text-xl p-[1px] overflow-hidden md:col-span-2",
         containerClassName
@@ -38,7 +43,6 @@ export function MovingButton({
       style={{
         borderRadius: borderRadius,
       }}
-      {...otherProps}
     >
       <div
         className="absolute inset-0"
@@ -72,17 +76,13 @@ export function MovingButton({
 export const MovingBorder = ({
   children,
   duration = 2000,
-  rx,
-  ry,
   ...otherProps
 }: {
   children: React.ReactNode;
   duration?: number;
-  rx?: string;
-  ry?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
-  const pathRef = useRef<any>();
+  const pathRef = useRef<SVGPathElement | null>(null);
   const progress = useMotionValue<number>(0);
 
   useAnimationFrame((time) => {
@@ -109,17 +109,15 @@ export const MovingBorder = ({
       <svg
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
+        viewBox="0 0 100 100"
         className="absolute h-full w-full"
         width="100%"
         height="100%"
         {...otherProps}
       >
-        <rect
+        <path
           fill="none"
-          width="100%"
-          height="100%"
-          rx={rx}
-          ry={ry}
+          d="M 0,0 L 100,0 L 100,100 L 0,100 Z"
           ref={pathRef}
         />
       </svg>

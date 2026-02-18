@@ -1,10 +1,12 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { MagicButton } from "./MagicButton";
-import Lottie from "lottie-react";
 import animationData from "@/data/confetti.json";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 const CopyMyEmail = ({
   copyText,

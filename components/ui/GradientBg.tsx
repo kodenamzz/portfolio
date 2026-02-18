@@ -1,6 +1,7 @@
 "use client";
 import { cn } from "@/utils/cn";
-import { useEffect, useRef, useState } from "react";
+import { useSyncExternalStore } from "react";
+import { useEffect, useRef } from "react";
 
 export const BackgroundGradientAnimation = ({
   gradientBackgroundStart = "rgb(108, 0, 162)",
@@ -34,11 +35,11 @@ export const BackgroundGradientAnimation = ({
   containerClassName?: string;
 }) => {
   const interactiveRef = useRef<HTMLDivElement>(null);
+  const curXRef = useRef(0);
+  const curYRef = useRef(0);
+  const tgXRef = useRef(0);
+  const tgYRef = useRef(0);
 
-  const [curX, setCurX] = useState(0);
-  const [curY, setCurY] = useState(0);
-  const [tgX, setTgX] = useState(0);
-  const [tgY, setTgY] = useState(0);
   useEffect(() => {
     document.body.style.setProperty(
       "--gradient-background-start",
@@ -70,32 +71,44 @@ export const BackgroundGradientAnimation = ({
   ]);
 
   useEffect(() => {
-    function move() {
-      if (!interactiveRef.current) {
+    if (!interactive) return;
+    let rafId: number;
+    function loop() {
+      const el = interactiveRef.current;
+      if (!el) {
+        rafId = requestAnimationFrame(loop);
         return;
       }
-      setCurX(curX + (tgX - curX) / 20);
-      setCurY(curY + (tgY - curY) / 20);
-      interactiveRef.current.style.transform = `translate(${Math.round(
-        curX
-      )}px, ${Math.round(curY)}px)`;
+      const curX = curXRef.current;
+      const curY = curYRef.current;
+      const tgX = tgXRef.current;
+      const tgY = tgYRef.current;
+      const newX = curX + (tgX - curX) / 20;
+      const newY = curY + (tgY - curY) / 20;
+      curXRef.current = newX;
+      curYRef.current = newY;
+      el.style.transform = `translate(${Math.round(newX)}px, ${Math.round(newY)}px)`;
+      rafId = requestAnimationFrame(loop);
     }
-
-    move();
-  }, [tgX, tgY]);
+    rafId = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(rafId);
+  }, [interactive]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {
       const rect = interactiveRef.current.getBoundingClientRect();
-      setTgX(event.clientX - rect.left);
-      setTgY(event.clientY - rect.top);
+      tgXRef.current = event.clientX - rect.left;
+      tgYRef.current = event.clientY - rect.top;
     }
   };
 
-  const [isSafari, setIsSafari] = useState(false);
-  useEffect(() => {
-    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
-  }, []);
+  const isSafari = useSyncExternalStore(
+    () => () => {},
+    () =>
+      typeof navigator !== "undefined" &&
+      /^((?!chrome|android).)*safari/i.test(navigator.userAgent),
+    () => false
+  );
 
   return (
     <div

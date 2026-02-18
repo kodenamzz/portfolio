@@ -21,7 +21,7 @@ import { usePathname, useRouter } from "@/navigation";
 type NavItem = {
   name: "Home" | "About" | "Projects" | "Experiences" | "Contact";
   link: string;
-  icon: JSX.Element;
+  icon: React.JSX.Element;
 };
 
 export const navItems: NavItem[] = [
@@ -53,7 +53,7 @@ export const FloatingNav = ({
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     // Check if current is not undefined and is a number
     if (typeof current === "number") {
-      let direction = current! - scrollYProgress.getPrevious()!;
+      const direction = current! - scrollYProgress.getPrevious()!;
 
       if (direction < 0) {
         setVisibleNav(true);
@@ -70,20 +70,18 @@ export const FloatingNav = ({
   const handleChangeLanguage = useCallback(
     (newLocale: string) => {
       router.push(pathname, { locale: newLocale });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [pathname]
+    [pathname, router]
   );
 
   useEffect(() => {
     if (window.scrollY < 0.5) {
       setVisibleNav(true);
     }
-  }, []);
+  }, [setVisibleNav]);
 
   useEffect(() => {
-    rerender();
+    requestAnimationFrame(() => rerender());
   }, [rerender]);
 
   return (

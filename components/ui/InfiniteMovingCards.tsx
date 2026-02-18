@@ -22,11 +22,8 @@ export const InfiniteMovingCards = ({
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
-
-  useEffect(() => {
-    addAnimation();
-  }, []);
   const [start, setStart] = useState(false);
+
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
@@ -43,6 +40,7 @@ export const InfiniteMovingCards = ({
       setStart(true);
     }
   }
+
   const getDirection = () => {
     if (containerRef.current) {
       if (direction === "left") {
@@ -58,6 +56,13 @@ export const InfiniteMovingCards = ({
       }
     }
   };
+
+  useEffect(() => {
+    addAnimation();
+    // Run once on mount to duplicate items and set CSS vars
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {

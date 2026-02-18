@@ -4,7 +4,6 @@ import { projects } from "@/data";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "./ui/ThreeDCard";
 import Image from "next/image";
-import Link from "next/link";
 import { FaLocationArrow } from "react-icons/fa";
 import StackIcon from "tech-stack-icons";
 import ExpandableCard from "./ui/ExpandableCard";
@@ -86,12 +85,11 @@ const RecentProjects = () => {
                     {project.link && (
                       <CardItem
                         translateZ={20}
-                        as={Link}
                         onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                           e.stopPropagation();
                         }}
                         href={project.link}
-                        target="__blank"
+                        target="_blank"
                         className="px-4 py-2 rounded-xl border border-purpleDark dark:border-purple text-purpleDark dark:text-purple text-xs font-bold flex items-center gap-2"
                       >
                         <span className="max-sm:hidden">{t("Checkout")}</span>{" "}
@@ -164,9 +162,8 @@ const RecentProjects = () => {
                   {project.link && (
                     <CardItem
                       translateZ={20}
-                      as={Link}
                       href={project.link}
-                      target="__blank"
+                      target="_blank"
                       className="px-4 py-2 rounded-xl border border-purpleDark dark:border-purple text-purpleDark dark:text-purple text-xs font-bold flex items-center gap-2"
                     >
                       <span>Checkout</span> <FaLocationArrow />

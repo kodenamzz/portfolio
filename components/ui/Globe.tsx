@@ -2,12 +2,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
-import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
+import { useThree, ThreeElement, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
+import type { GlobeConfig } from "@/types/globe";
+
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
+    threeGlobe: ThreeElement<typeof ThreeGlobe>;
   }
 }
 
@@ -27,31 +29,28 @@ type Position = {
   color: string;
 };
 
-export type GlobeConfig = {
-  pointSize?: number;
-  globeColor?: string;
-  showAtmosphere?: boolean;
-  atmosphereColor?: string;
-  atmosphereAltitude?: number;
-  emissive?: string;
-  emissiveIntensity?: number;
-  shininess?: number;
-  polygonColor?: string;
-  ambientLight?: string;
-  directionalLeftLight?: string;
-  directionalTopLight?: string;
-  pointLight?: string;
-  arcTime?: number;
-  arcLength?: number;
-  rings?: number;
-  maxRings?: number;
-  initialPosition?: {
-    lat: number;
-    lng: number;
-  };
-  autoRotate?: boolean;
-  autoRotateSpeed?: number;
-};
+function isValidCoord(n: number): boolean {
+  return typeof n === "number" && Number.isFinite(n);
+}
+
+function hasValidCoordinates(
+  feature: { geometry?: { type: string; coordinates?: unknown[] } }
+): boolean {
+  const geom = feature?.geometry;
+  if (!geom || geom.type !== "Polygon") return false;
+  const coords = geom.coordinates;
+  if (!Array.isArray(coords) || coords.length === 0) return false;
+  for (const ring of coords) {
+    if (!Array.isArray(ring)) return false;
+    for (const c of ring) {
+      if (!Array.isArray(c) || c.length < 2) return false;
+      if (!isValidCoord(c[0] as number) || !isValidCoord(c[1] as number)) return false;
+    }
+  }
+  return true;
+}
+
+export type { GlobeConfig };
 
 interface WorldProps {
   globeConfig: GlobeConfig;
@@ -91,13 +90,6 @@ export function Globe({ globeConfig, data }: WorldProps) {
     ...globeConfig,
   };
 
-  useEffect(() => {
-    if (globeRef.current) {
-      _buildData();
-      _buildMaterial();
-    }
-  }, [globeRef.current]);
-
   const _buildMaterial = () => {
     if (!globeRef.current) return;
 
@@ -114,11 +106,25 @@ export function Globe({ globeConfig, data }: WorldProps) {
   };
 
   const _buildData = () => {
-    const arcs = data;
-    let points = [];
+    const arcs = data.filter(
+      (arc) =>
+        isValidCoord(arc.startLat) &&
+        isValidCoord(arc.startLng) &&
+        isValidCoord(arc.endLat) &&
+        isValidCoord(arc.endLng) &&
+        isValidCoord(arc.arcAlt)
+    );
+    const points: {
+      size: number;
+      order: number;
+      color: (t: number) => string;
+      lat: number;
+      lng: number;
+    }[] = [];
     for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i];
-      const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
+      const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number } | null;
+      if (!rgb) continue;
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
@@ -148,59 +154,79 @@ export function Globe({ globeConfig, data }: WorldProps) {
     setGlobeData(filteredPoints);
   };
 
-  useEffect(() => {
-    if (globeRef.current && globeData) {
-      globeRef.current
-        .hexPolygonsData(countries.features)
-        .hexPolygonResolution(3)
-        .hexPolygonMargin(0.7)
-        .showAtmosphere(defaultProps.showAtmosphere)
-        .atmosphereColor(defaultProps.atmosphereColor)
-        .atmosphereAltitude(defaultProps.atmosphereAltitude)
-        .hexPolygonColor((e) => {
-          return defaultProps.polygonColor;
-        });
-      startAnimation();
-    }
-  }, [globeData]);
-
   const startAnimation = () => {
     if (!globeRef.current || !globeData) return;
 
+    const validArcs = data.filter(
+      (d) =>
+        isValidCoord(d.startLat) &&
+        isValidCoord(d.startLng) &&
+        isValidCoord(d.endLat) &&
+        isValidCoord(d.endLng) &&
+        isValidCoord(d.arcAlt)
+    );
+
     globeRef.current
-      .arcsData(data)
+      .arcsData(validArcs)
       .arcStartLat((d) => (d as { startLat: number }).startLat * 1)
       .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
       .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
       .arcEndLng((d) => (d as { endLng: number }).endLng * 1)
-      .arcColor((e: any) => (e as { color: string }).color)
-      .arcAltitude((e) => {
-        return (e as { arcAlt: number }).arcAlt * 1;
+      .arcColor((d: object) => (d as Position).color)
+      .arcAltitude((d) => {
+        return (d as { arcAlt: number }).arcAlt * 1;
       })
-      .arcStroke((e) => {
+      .arcStroke(() => {
         return [0.32, 0.28, 0.3][Math.round(Math.random() * 2)];
       })
       .arcDashLength(defaultProps.arcLength)
-      .arcDashInitialGap((e) => (e as { order: number }).order * 1)
+      .arcDashInitialGap((d) => (d as { order: number }).order * 1)
       .arcDashGap(15)
-      .arcDashAnimateTime((e) => defaultProps.arcTime);
+      .arcDashAnimateTime(() => defaultProps.arcTime);
 
     globeRef.current
-      .pointsData(data)
-      .pointColor((e) => (e as { color: string }).color)
+      .pointsData(globeData)
+      .pointLat((d) => (d as { lat: number }).lat)
+      .pointLng((d) => (d as { lng: number }).lng)
+      .pointColor((d) => (d as { color: (t: number) => string }).color(0))
       .pointsMerge(true)
       .pointAltitude(0.0)
       .pointRadius(2);
 
     globeRef.current
       .ringsData([])
-      .ringColor((e: any) => (t: any) => e.color(t))
+      .ringColor((ring: object) => (t: number) =>
+        (ring as { color: (t: number) => string }).color(t)
+      )
       .ringMaxRadius(defaultProps.maxRings)
       .ringPropagationSpeed(RING_PROPAGATION_SPEED)
       .ringRepeatPeriod(
         (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
       );
   };
+
+  useEffect(() => {
+    if (globeRef.current) {
+      _buildData();
+      _buildMaterial();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data.length]);
+
+  useEffect(() => {
+    if (globeRef.current && globeData) {
+      globeRef.current
+        .hexPolygonsData(countries.features.filter(hasValidCoordinates))
+        .hexPolygonResolution(3)
+        .hexPolygonMargin(0.7)
+        .showAtmosphere(defaultProps.showAtmosphere)
+        .atmosphereColor(defaultProps.atmosphereColor)
+        .atmosphereAltitude(defaultProps.atmosphereAltitude)
+        .hexPolygonColor(() => defaultProps.polygonColor);
+      startAnimation();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [globeData]);
 
   useEffect(() => {
     if (!globeRef.current || !globeData) return;
@@ -221,7 +247,8 @@ export function Globe({ globeConfig, data }: WorldProps) {
     return () => {
       clearInterval(interval);
     };
-  }, [globeRef.current, globeData]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [globeData]);
 
   return (
     <>
@@ -237,7 +264,7 @@ export function WebGLRendererConfig() {
     gl.setPixelRatio(window.devicePixelRatio);
     gl.setSize(size.width, size.height);
     gl.setClearColor(0xffaaff, 0);
-  }, []);
+  }, [gl, size.width, size.height]);
 
   return null;
 }
@@ -279,12 +306,12 @@ export function World(props: WorldProps) {
 }
 
 export function hexToRgb(hex: string) {
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  const expanded = hex.replace(shorthandRegex, function (_m, r: string, g: string, b: string) {
     return r + r + g + g + b + b;
   });
 
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(expanded);
   return result
     ? {
         r: parseInt(result[1], 16),

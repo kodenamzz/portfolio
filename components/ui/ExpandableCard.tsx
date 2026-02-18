@@ -164,7 +164,7 @@ const ExpandableCard = ({ renderProject, projects }: Props) => {
           </div>
         ) : null}
       </AnimatePresence>
-      {projects.map((project, index) => (
+      {projects.map((project) => (
         <motion.div
           layoutId={`card-${project.title}-${id}`}
           key={project.title}

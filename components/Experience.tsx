@@ -1,12 +1,16 @@
 import { workExperience } from "@/data";
-import React from "react";
+import React, { useMemo } from "react";
 import { MovingButton } from "./ui/MovingBorders";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+
+const CARD_DURATIONS = workExperience.map(
+  () => Math.floor(Math.random() * 10000) + 10000
+);
 
 const Experience = () => {
   const t = useTranslations("Experiences");
+  const durations = useMemo(() => CARD_DURATIONS, []);
   return (
     <div id="experiences" className="py-20">
       <h1 className="heading">
@@ -16,12 +20,11 @@ const Experience = () => {
         </span>
       </h1>
       <div className="w-full mt-12 grid grid-cols-1 gap-10">
-        {workExperience.map((card) => (
+        {workExperience.map((card, i) => (
           <MovingButton
-            as={card.link ? Link : "div"}
             key={card.id}
             borderRadius="1.75rem"
-            duration={Math.floor(Math.random() * 10000) + 10000}
+            duration={durations[i]}
             className="flex-1 dark:text-white border-neutral-200 dark:border-slate-800"
             {...(card.link && { href: card.link, target: "_blank" })}
           >

@@ -1,6 +1,118 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.mjs";
+
+/* Class-based dark mode so next-themes toggle works (Tailwind v4 defaults to prefers-color-scheme) */
+/* Match .dark on html or any ancestor, and all descendants */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Custom Colors */
+  --color-black: #000;
+  --color-black-100: #000319;
+  --color-black-200: rgba(17, 25, 40, 0.75);
+  --color-black-300: rgba(255, 255, 255, 0.125);
+  
+  --color-white: #FFF;
+  --color-white-100: #BEC1DD;
+  --color-white-200: #C1C2D3;
+  
+  --color-blue-100: #E4ECFF;
+  
+  --color-purple: #CBACF9;
+  --color-purple-dark: #5d5cdc;
+  /* Alias for camelCase compatibility */
+  --color-purpleDark: #5d5cdc;
+
+  /* Theme colors using CSS variables */
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  /* Border Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Box Shadow */
+  --shadow-input: 0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08);
+
+  /* Keyframes */
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%,-40%) scale(1);
+    }
+  }
+
+  @keyframes shimmer {
+    from { background-position: 0 0; }
+    to { background-position: -200% 0; }
+  }
+
+  @keyframes move-horizontal {
+    0% { transform: translateX(-50%) translateY(-10%); }
+    50% { transform: translateX(50%) translateY(10%); }
+    100% { transform: translateX(-50%) translateY(-10%); }
+  }
+
+  @keyframes move-in-circle {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes move-vertical {
+    0% { transform: translateY(-50%); }
+    50% { transform: translateY(50%); }
+    100% { transform: translateY(-50%); }
+  }
+
+  @keyframes scroll {
+    to { transform: translate(calc(-50% - 0.5rem)); }
+  }
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-spotlight: spotlight 2s ease .75s 1 forwards;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-first: move-vertical 30s ease infinite;
+  --animate-second: move-in-circle 20s reverse infinite;
+  --animate-third: move-in-circle 40s linear infinite;
+  --animate-fourth: move-horizontal 40s ease infinite;
+  --animate-fifth: move-in-circle 20s ease infinite;
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
 
 @layer base {
   :root {

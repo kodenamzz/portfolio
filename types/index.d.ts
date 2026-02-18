@@ -5,11 +5,12 @@ type Message = typeof en;
 
 declare global {
   // Use type safe message keys with `next-intl`
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface IntlMessages extends Message {}
 }
 
 type FilterKeysByPrefix<T, Prefix extends string> = {
-  [K in keyof T as K extends `${infer _Prefix}${Prefix}` ? K : never]: T[K];
+  [K in keyof T as K extends `${string}${Prefix}` ? K : never]: T[K];
 };
 
 type ExperiencesTitle = keyof FilterKeysByPrefix<

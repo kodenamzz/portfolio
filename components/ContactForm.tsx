@@ -13,7 +13,7 @@ import { useTranslations } from "next-intl";
 
 export const formDataSchema = z.object({
   name: z.string().min(5).max(150),
-  email: z.string().email(),
+  email: z.email(),
   message: z.string().min(20),
 });
 export type FormData = z.infer<typeof formDataSchema>;
