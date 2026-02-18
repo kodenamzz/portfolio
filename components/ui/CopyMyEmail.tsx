@@ -15,7 +15,9 @@ const CopyMyEmail = ({
 }) => {
   const [copied, setCopied] = useState(false);
   const handelCopyEmail = () => {
-    navigator.clipboard.writeText("abdkode.p@gmail.com");
+    if (typeof navigator !== "undefined") {
+      navigator.clipboard.writeText("abdkode.p@gmail.com");
+    }
     setCopied(true);
 
     setTimeout(() => {
