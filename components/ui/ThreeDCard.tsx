@@ -141,20 +141,26 @@ export const CardItem = ({
   }, [handleAnimations]);
 
   const shared = {
-    ref: ref as React.Ref<HTMLAnchorElement>,
     className: cn("w-fit transition duration-200 ease-linear", className),
   };
 
   if (href != null) {
     return (
-      <Link href={href} {...rest} {...shared}>
+      <Link href={href} {...rest} {...shared} ref={ref as React.Ref<HTMLAnchorElement>}>
         {children}
       </Link>
     );
   }
 
-  const Tag = as ?? "div";
-  return React.createElement(Tag, { ...rest, ...shared }, children);
+  const Tag = (as ?? "div") as React.ComponentType<{
+    children?: React.ReactNode;
+    [key: string]: unknown;
+  }>;
+  return (
+    <Tag {...rest} {...shared} ref={ref}>
+      {children}
+    </Tag>
+  );
 };
 
 // Create a hook to use the context
